@@ -1,0 +1,96 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.wildc.ucumari.client.modelo;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+/**
+ *
+ * @author Cristian
+ */
+@Embeddable
+public class ShoppingListItemSurveyPK implements Serializable {
+    @Basic(optional = false)
+    @Column(name = "SHOPPING_LIST_ID")
+    private String shoppingListId;
+    @Basic(optional = false)
+    @Column(name = "SHOPPING_LIST_ITEM_SEQ_ID")
+    private String shoppingListItemSeqId;
+    @Basic(optional = false)
+    @Column(name = "SURVEY_RESPONSE_ID")
+    private String surveyResponseId;
+
+    public ShoppingListItemSurveyPK() {
+    }
+
+    public ShoppingListItemSurveyPK(String shoppingListId, String shoppingListItemSeqId, String surveyResponseId) {
+        this.shoppingListId = shoppingListId;
+        this.shoppingListItemSeqId = shoppingListItemSeqId;
+        this.surveyResponseId = surveyResponseId;
+    }
+
+    public String getShoppingListId() {
+        return shoppingListId;
+    }
+
+    public void setShoppingListId(String shoppingListId) {
+        this.shoppingListId = shoppingListId;
+    }
+
+    public String getShoppingListItemSeqId() {
+        return shoppingListItemSeqId;
+    }
+
+    public void setShoppingListItemSeqId(String shoppingListItemSeqId) {
+        this.shoppingListItemSeqId = shoppingListItemSeqId;
+    }
+
+    public String getSurveyResponseId() {
+        return surveyResponseId;
+    }
+
+    public void setSurveyResponseId(String surveyResponseId) {
+        this.surveyResponseId = surveyResponseId;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (shoppingListId != null ? shoppingListId.hashCode() : 0);
+        hash += (shoppingListItemSeqId != null ? shoppingListItemSeqId.hashCode() : 0);
+        hash += (surveyResponseId != null ? surveyResponseId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof ShoppingListItemSurveyPK)) {
+            return false;
+        }
+        ShoppingListItemSurveyPK other = (ShoppingListItemSurveyPK) object;
+        if ((this.shoppingListId == null && other.shoppingListId != null) || (this.shoppingListId != null && !this.shoppingListId.equals(other.shoppingListId))) {
+            return false;
+        }
+        if ((this.shoppingListItemSeqId == null && other.shoppingListItemSeqId != null) || (this.shoppingListItemSeqId != null && !this.shoppingListItemSeqId.equals(other.shoppingListItemSeqId))) {
+            return false;
+        }
+        if ((this.surveyResponseId == null && other.surveyResponseId != null) || (this.surveyResponseId != null && !this.surveyResponseId.equals(other.surveyResponseId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.wildc.ucumari.client.modelo.ShoppingListItemSurveyPK[ shoppingListId=" + shoppingListId + ", shoppingListItemSeqId=" + shoppingListItemSeqId + ", surveyResponseId=" + surveyResponseId + " ]";
+    }
+    
+}

@@ -1,0 +1,92 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/data/jpa 
+    	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<context:component-scan base-package="com.wildc.ucumari.security.model" />
+	<context:component-scan base-package="com.wildc.ucumari.party.model" />	
+	<context:component-scan base-package="com.wildc.ucumari" />
+	
+	<jpa:repositories base-package="com.wildc.ucumari.facility.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
+	<jpa:repositories base-package="com.wildc.ucumari.party.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
+	<jpa:repositories base-package="com.wildc.ucumari.product.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
+	<jpa:repositories base-package="com.wildc.ucumari.security.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
+	
+	
+	<bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="MySqldataSource" />
+        <property name="persistenceUnitName" value="ucumariServerPU"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="true" />
+                <property name="showSql" value="true"/>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+	<bean id="MySqldataSource" class="org.springframework.jndi.JndiObjectFactoryBean">		 
+		<property name="jndiName" value="java:/comp/env/jdbc/Ucumari" />
+		<property name="lookupOnStartup" value="false" />
+		<property name="cache" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+	</bean>
+
+	<!--mvc:annotation-driven /-->
+	<!--mvc:interceptors>
+      <bean class="com.wildc.ucumari.security.UcumariInterceptor" />
+    </mvc:interceptors>
+    
+    <bean id="jspViewResolver"
+    	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="*" />
+        <property name="suffix" value=".*" />
+    </bean--> 
+    
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">	
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonConverter" />
+				<!--ref bean="xmlConverter" /-->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes" value="application/json" />
+		
+	</bean>
+
+	<!--bean id="xmlConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+		<property name="marshaller" ref="xstreamMarshaller" />
+		<property name="unmarshaller" ref="xstreamMarshaller" />
+	</bean-->
+	
+	<!--bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller"/-->
+	
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">  
+    	<property name="messageConverters">
+			<list>
+				<ref bean="jsonConverter" />
+				<!--ref bean="xmlConverter" /-->
+			</list>
+		</property>  
+    </bean>
+
+</beans>

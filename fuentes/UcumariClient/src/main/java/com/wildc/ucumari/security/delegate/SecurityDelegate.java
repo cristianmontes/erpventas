@@ -33,7 +33,7 @@ public class SecurityDelegate {
             AppResources.getInstance().get(Constantes.URL_CONTEXTO) +
             AppResources.getInstance().get(Constantes.URL_CONTEXTO_SEGURIDAD);*/
     
-    private String urlConsultas = "http://localhost:8082/UcumariServer/services/security/";
+    private String urlConsultas = "http://localhost:8082/ucumari-server/services/security/";
     
     public UserLogin login(UserLogin userLogin) throws Exception{
         /*

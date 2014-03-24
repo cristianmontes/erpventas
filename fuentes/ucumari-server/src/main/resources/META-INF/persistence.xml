@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                                 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+             
+
+ <persistence-unit name="ucumariServerPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    
+    <class>com.wildc.ucumari.security.model.UserLogin</class>
+    <class>com.wildc.ucumari.security.model.SecurityGroup</class>
+    <class>com.wildc.ucumari.security.model.SecurityGroupPermission</class>
+    <class>com.wildc.ucumari.security.model.SecurityGroupPermissionPK</class>
+    <class>com.wildc.ucumari.security.model.SecurityPermission</class>        
+    <class>com.wildc.ucumari.security.model.UserLoginHistory</class>
+    <class>com.wildc.ucumari.security.model.UserLoginHistoryPK</class>
+    <class>com.wildc.ucumari.security.model.UserLoginPasswordHistory</class>
+    <class>com.wildc.ucumari.security.model.UserLoginPasswordHistoryPK</class>
+    <class>com.wildc.ucumari.security.model.UserLoginSecurityGroup</class>
+    <class>com.wildc.ucumari.security.model.UserLoginSecurityGroupPK</class>
+    
+    <class>com.wildc.ucumari.parameters.model.CustomMethod</class>
+    <class>com.wildc.ucumari.parameters.model.CustomMethodType</class>
+    <class>com.wildc.ucumari.parameters.model.Enumeration</class>
+    <class>com.wildc.ucumari.parameters.model.EnumerationType</class>
+    <class>com.wildc.ucumari.parameters.model.Geo</class>
+    <class>com.wildc.ucumari.parameters.model.GeoAssoc</class>
+    <class>com.wildc.ucumari.parameters.model.GeoAssocPK</class>
+    <class>com.wildc.ucumari.parameters.model.GeoAssocType</class>
+    <class>com.wildc.ucumari.parameters.model.GeoPoint</class>   
+    <class>com.wildc.ucumari.parameters.model.GeoType</class>
+    <class>com.wildc.ucumari.parameters.model.StatusItem</class>
+    <class>com.wildc.ucumari.parameters.model.StatusType</class>
+    <class>com.wildc.ucumari.parameters.model.Uom</class>
+    <class>com.wildc.ucumari.parameters.model.UomConversion</class>
+    <class>com.wildc.ucumari.parameters.model.UomConversionDated</class>
+    <class>com.wildc.ucumari.parameters.model.UomConversionDatedPK</class>
+    <class>com.wildc.ucumari.parameters.model.UomConversionPK</class>
+    <class>com.wildc.ucumari.parameters.model.UomType</class>
+    <class>com.wildc.ucumari.parameters.model.TermType</class>
+    <class>com.wildc.ucumari.parameters.model.CustomTimePeriod</class>
+    <class>com.wildc.ucumari.parameters.model.PeriodType</class>
+    
+    
+    <class>com.wildc.ucumari.product.model.Product</class>
+    <class>com.wildc.ucumari.product.model.ProductType</class>
+    <class>com.wildc.ucumari.product.model.ProductCategory</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryType</class>
+    <class>com.wildc.ucumari.product.model.ProductAssoc</class>
+    <class>com.wildc.ucumari.product.model.ProductAssocPK</class>
+    <class>com.wildc.ucumari.product.model.ProductAssocType</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryMember</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryMemberPK</class>
+    <class>com.wildc.ucumari.product.model.ProductFacility</class>
+    <class>com.wildc.ucumari.product.model.ProductFacilityPK</class>
+    <class>com.wildc.ucumari.product.model.ProductFacilityLocation</class>
+    <class>com.wildc.ucumari.product.model.ProductFacilityLocationPK</class>
+    <class>com.wildc.ucumari.product.model.ProductFeature</class>
+    <class>com.wildc.ucumari.product.model.ProductFeatureType</class>
+    <class>com.wildc.ucumari.product.model.ProductFeatureCategory</class>
+    <class>com.wildc.ucumari.product.model.ProductFeatureApplType</class>
+    <class>com.wildc.ucumari.product.model.ProductFeatureAppl</class>
+    <class>com.wildc.ucumari.product.model.ProductFeatureApplPK</class>
+    <class>com.wildc.ucumari.product.model.ProductFeaturePrice</class>
+    <class>com.wildc.ucumari.product.model.ProductFeaturePricePK</class>            
+    <class>com.wildc.ucumari.product.model.ProductPrice</class>
+    <class>com.wildc.ucumari.product.model.ProductPricePK</class>
+    <class>com.wildc.ucumari.product.model.ProductPriceType</class>
+    <class>com.wildc.ucumari.product.model.ProductPricePurpose</class>
+    <class>com.wildc.ucumari.product.model.ProductPriceAction</class>
+    <class>com.wildc.ucumari.product.model.ProductPriceActionPK</class>
+    <class>com.wildc.ucumari.product.model.ProductPriceActionType</class>
+    <class>com.wildc.ucumari.product.model.ProductPriceRule</class>        
+    <class>com.wildc.ucumari.product.model.ProductStoreGroup</class>
+    <class>com.wildc.ucumari.product.model.ProductStoreGroupType</class>
+    <class>com.wildc.ucumari.product.model.ProductPromo</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoCategoryPK</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoCategory</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoCode</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoAction</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoActionPK</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoRule</class>
+    <class>com.wildc.ucumari.product.model.ProductPromoRulePK</class>    
+    <class>com.wildc.ucumari.product.model.ProductStore</class>
+    <class>com.wildc.ucumari.product.model.ProdCatalog</class>
+    <class>com.wildc.ucumari.product.model.ProdCatalogCategoryPK</class>
+    <class>com.wildc.ucumari.product.model.ProdCatalogCategory</class>
+    <class>com.wildc.ucumari.product.model.ProdCatalogCategoryType</class>
+    <class>com.wildc.ucumari.product.model.ProductStoreCatalog</class>
+    <class>com.wildc.ucumari.product.model.ProductStoreCatalogPK</class>
+    <class>com.wildc.ucumari.product.model.ProductStoreFacility</class>
+    <class>com.wildc.ucumari.product.model.ProductStoreFacilityPK</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryLink</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryLinkPK</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryRollup</class>
+    <class>com.wildc.ucumari.product.model.ProductCategoryRollupPK</class>
+    
+    
+    
+    
+           
+    <class>com.wildc.ucumari.tax.model.TaxAuthority</class>
+    <class>com.wildc.ucumari.tax.model.TaxAuthorityPK</class>
+    
+    
+    <class>com.wildc.ucumari.party.model.Party</class>
+    <class>com.wildc.ucumari.party.model.PartyType</class>    
+    <class>com.wildc.ucumari.party.model.PartyGroup</class>
+    <class>com.wildc.ucumari.party.model.Person</class>
+    <class>com.wildc.ucumari.parameters.model.RoleType</class>
+    <class>com.wildc.ucumari.party.model.PartyRole</class>
+    <class>com.wildc.ucumari.party.model.PartyRelationship</class>
+    <class>com.wildc.ucumari.party.model.PartyRelationshipPK</class>
+    <class>com.wildc.ucumari.party.model.PartyRelationshipType</class>
+    <class>com.wildc.ucumari.party.model.PartyClassificationGroup</class>
+    <class>com.wildc.ucumari.party.model.PartyClassificationType</class>
+    <class>com.wildc.ucumari.party.model.SkillType</class>
+        
+    <class>com.wildc.ucumari.facility.model.Facility</class>
+    <class>com.wildc.ucumari.facility.model.FacilityGroup</class>
+    <class>com.wildc.ucumari.facility.model.FacilityGroupType</class>
+    <class>com.wildc.ucumari.facility.model.FacilityLocation</class>
+    <class>com.wildc.ucumari.facility.model.FacilityLocationPK</class>
+    <class>com.wildc.ucumari.facility.model.FacilityType</class>
+    <class>com.wildc.ucumari.facility.model.FacilityContactMech</class>
+    <class>com.wildc.ucumari.facility.model.FacilityContactMechPK</class>
+    <class>com.wildc.ucumari.facility.model.FacilityContactMechPurpose</class>
+    <class>com.wildc.ucumari.facility.model.FacilityContactMechPurposePK</class>
+    <class>com.wildc.ucumari.facility.model.FacilityParty</class>
+    <class>com.wildc.ucumari.facility.model.FacilityPartyPK</class>
+    <class>com.wildc.ucumari.facility.model.FacilityRole</class>
+    <class>com.wildc.ucumari.facility.model.FacilityRolePK</class>
+    <class>com.wildc.ucumari.facility.model.FacilityPartyPermission</class>
+    <class>com.wildc.ucumari.facility.model.FacilityPartyPermissionPK</class>
+        
+    <class>com.wildc.ucumari.contact.model.ContactMech</class>
+    <class>com.wildc.ucumari.contact.model.ContactMechPurposeType</class>
+    <class>com.wildc.ucumari.contact.model.ContactMechType</class>
+    <class>com.wildc.ucumari.contact.model.ContactMechTypePurpose</class>
+    <class>com.wildc.ucumari.contact.model.ContactMechTypePurposePK</class>
+    <class>com.wildc.ucumari.contact.model.PostalAddress</class>
+    <class>com.wildc.ucumari.contact.model.TelecomNumber</class>
+        
+    <class>com.wildc.ucumari.shipment.model.Shipment</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentType</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentContactMech</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentContactMechPK</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentContactMechType</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentItem</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentItemPK</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentItemBilling</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentItemBillingPK</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentMethodType</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentPackage</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentPackagePK</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentPackageContent</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentPackageContentPK</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentReceipt</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentReceiptRole</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentReceiptRolePK</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentStatus</class>
+    <class>com.wildc.ucumari.shipment.model.ShipmentStatusPK</class>
+    <class>com.wildc.ucumari.shipment.model.RejectionReason</class>
+    
+    
+    <class>com.wildc.ucumari.returns.model.ReturnHeader</class>
+    <class>com.wildc.ucumari.returns.model.ReturnHeaderType</class>
+    <class>com.wildc.ucumari.returns.model.CarrierReturnService</class>
+    
+    <class>com.wildc.ucumari.payment.model.Payment</class>
+    <class>com.wildc.ucumari.payment.model.PaymentType</class>
+    <class>com.wildc.ucumari.payment.model.PaymentMethod</class>
+    <class>com.wildc.ucumari.payment.model.GiftCard</class>
+    <class>com.wildc.ucumari.payment.model.EftAccount</class>
+    <class>com.wildc.ucumari.payment.model.CreditCard</class>
+    <class>com.wildc.ucumari.payment.model.PaymentMethodType</class>
+    <class>com.wildc.ucumari.payment.model.CashDrawer</class>
+    <class>com.wildc.ucumari.payment.model.CashDrawerTransaction</class>
+    <class>com.wildc.ucumari.payment.model.CashDrawerTransactionPK</class>
+    <class>com.wildc.ucumari.payment.model.PaycheckItem</class>
+    <class>com.wildc.ucumari.payment.model.PaycheckItemPK</class>
+    <class>com.wildc.ucumari.payment.model.PaycheckItemClass</class>
+    <class>com.wildc.ucumari.payment.model.PaycheckItemType</class>
+    
+    <class>com.wildc.ucumari.invoice.model.Invoice</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceType</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceContactMech</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceContactMechPK</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceAdjustment</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceAdjustmentType</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceItem</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceItemPK</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceRole</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceRolePK</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceStatus</class>
+    <class>com.wildc.ucumari.invoice.model.InvoiceStatusPK</class>    
+    <class>com.wildc.ucumari.invoice.model.InvoiceItemType</class>    
+    
+    <class>com.wildc.ucumari.inventory.model.InventoryItem</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemType</class>
+    <class>com.wildc.ucumari.inventory.model.Lot</class>
+    <class>com.wildc.ucumari.inventory.model.Container</class>
+    <class>com.wildc.ucumari.inventory.model.ContainerType</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemDetail</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemDetailPK</class>
+    <class>com.wildc.ucumari.inventory.model.PhysicalInventory</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemLabel</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemLabelType</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemStatus</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryItemStatusPK</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryEventPlanned</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryEventPlannedPK</class>
+    <class>com.wildc.ucumari.inventory.model.InventoryEventPlannedType</class>    
+        
+    <class>com.wildc.ucumari.agreement.model.Agreement</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementType</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementItem</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementItemPK</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementItemType</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementPartyApplic</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementPartyApplicPK</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementProductAppl</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementProductApplPK</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementPromoAppl</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementPromoApplPK</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementRolePK</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementRole</class>
+    <class>com.wildc.ucumari.agreement.model.AgreementTerm</class>
+        
+    <class>com.wildc.ucumari.order.model.OrderHeader</class>
+    <class>com.wildc.ucumari.order.model.OrderType</class>
+    <class>com.wildc.ucumari.order.model.OrderItem</class>
+    <class>com.wildc.ucumari.order.model.OrderItemPK</class>
+    <class>com.wildc.ucumari.order.model.OrderItemGroup</class>
+    <class>com.wildc.ucumari.order.model.OrderItemGroupPK</class>
+    <class>com.wildc.ucumari.order.model.OrderItemType</class>
+    <class>com.wildc.ucumari.order.model.OrderAdjustment</class>
+    <class>com.wildc.ucumari.order.model.OrderAdjustmentType</class>
+    <class>com.wildc.ucumari.order.model.OrderStatus</class>
+    
+    
+    <class>com.wildc.ucumari.quote.model.QuoteItem</class>
+    <class>com.wildc.ucumari.quote.model.QuoteItemPK</class>
+    <class>com.wildc.ucumari.quote.model.Quote</class>
+    <class>com.wildc.ucumari.quote.model.QuoteType</class>    
+    <class>com.wildc.ucumari.quote.model.SalesOpportunity</class>
+    <class>com.wildc.ucumari.quote.model.SalesOpportunityStage</class>
+        
+    <class>com.wildc.ucumari.custrequest.model.CustRequest</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestType</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestCategory</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestItem</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestItemPK</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestResolution</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestRole</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestRolePK</class>
+    <class>com.wildc.ucumari.custrequest.model.CustRequestStatus</class>
+    
+    
+    <class>com.wildc.ucumari.budget.model.Budget</class>
+    <class>com.wildc.ucumari.budget.model.BudgetType</class>
+    <class>com.wildc.ucumari.budget.model.BudgetItem</class>
+    <class>com.wildc.ucumari.budget.model.BudgetItemPK</class>
+    <class>com.wildc.ucumari.budget.model.BudgetItemType</class>
+    <class>com.wildc.ucumari.budget.model.BudgetReview</class>
+    <class>com.wildc.ucumari.budget.model.BudgetReviewPK</class>
+    <class>com.wildc.ucumari.budget.model.BudgetReviewResultType</class>
+    <class>com.wildc.ucumari.budget.model.BudgetRevision</class>
+    <class>com.wildc.ucumari.budget.model.BudgetRevisionPK</class>
+    <class>com.wildc.ucumari.budget.model.BudgetRevisionImpact</class>
+    <class>com.wildc.ucumari.budget.model.BudgetRevisionImpactPK</class>
+    <class>com.wildc.ucumari.budget.model.BudgetRole</class>
+    <class>com.wildc.ucumari.budget.model.BudgetRolePK</class>
+    <class>com.wildc.ucumari.budget.model.BudgetScenario</class>
+    <class>com.wildc.ucumari.budget.model.BudgetScenarioRule</class>
+    <class>com.wildc.ucumari.budget.model.BudgetScenarioRulePK</class>
+    <class>com.wildc.ucumari.budget.model.BudgetStatus</class>
+    <class>com.wildc.ucumari.budget.model.BudgetStatusPK</class>
+               
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+	  <property name="hibernate.format_sql" value="false" />      
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>      
+    </properties>
+  </persistence-unit>
+  
+</persistence>
