@@ -3,6 +3,12 @@
   <groupId>com.wildc.ucumari</groupId>
   <artifactId>ucumari-framework</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <repositories>  	
+  	<repository>
+  		<id>atlassian</id>
+  		<url>https://maven.atlassian.com/repository/public</url>
+  	</repository>
+  </repositories>
   <properties>
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<jackson.version>1.9.10</jackson.version>		

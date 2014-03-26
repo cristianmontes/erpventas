@@ -14,7 +14,7 @@ import com.wildc.ucumari.party.service.PartyService;
  * @author Cristian
  *
  */
-@Service("partyServiceImpl")
+@Service("partyService")
 public class PartyServiceImpl implements PartyService {
 
 	/**

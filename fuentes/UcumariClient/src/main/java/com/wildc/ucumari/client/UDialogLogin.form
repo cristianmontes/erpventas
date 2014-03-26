@@ -36,7 +36,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//container.setBounds(0, 0, getWidth(), getHeight());&#xa;&#xa;&#xa;SwingUtils.createLoginDialog(this, 408, 270);&#xa;//SwingUtils.addEscapeToCloseSupport(this, true);&#xa;SwingUtils.fadeInFast(this);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//container.setBounds(0, 0, getWidth(), getHeight());&#xa;&#xa;&#xa;//SwingUtils.createLoginDialog(this, 408, 270);&#xa;//SwingUtils.addEscapeToCloseSupport(this, true);&#xa;//SwingUtils.fadeInFast(this);&#xa;this.setSize(408, 270);&#xa;this.setLocation((this.getToolkit().getScreenSize().width-this.getWidth())/2, (this.getToolkit().getScreenSize().height-this.getHeight())/2);"/>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        g.setColor(Constantes.BACKGROUND_LOGIN);&#xa;        g.fillRect(0,0,getWidth(), getHeight());&#xa;    }}"/>
         <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="container.setPreferredSize(new Dimension(400,220));&#xa;container.setFocusable(true);&#xa;container.requestFocusInWindow();"/>
       </AuxValues>

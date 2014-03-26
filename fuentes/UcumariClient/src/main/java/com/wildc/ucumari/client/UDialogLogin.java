@@ -38,8 +38,8 @@ public class UDialogLogin extends javax.swing.JDialog {
         
         //createSplashScreen();                
         
-        setUndecorated(true);
-        AWTUtilities.setWindowOpaque(this, false);	
+        //setUndecorated(true);
+        //AWTUtilities.setWindowOpaque(this, false);	
         
         initComponents();
         
@@ -263,9 +263,11 @@ public class UDialogLogin extends javax.swing.JDialog {
                     getContentPane().add(container, java.awt.BorderLayout.CENTER);
                     //container.setBounds(0, 0, getWidth(), getHeight());
 
-                    SwingUtils.createLoginDialog(this, 408, 270);
+                    //SwingUtils.createLoginDialog(this, 408, 270);
                     //SwingUtils.addEscapeToCloseSupport(this, true);
-                    SwingUtils.fadeInFast(this);
+                    //SwingUtils.fadeInFast(this);
+                    this.setSize(408, 270);
+                    this.setLocation((this.getToolkit().getScreenSize().width-this.getWidth())/2, (this.getToolkit().getScreenSize().height-this.getHeight())/2);
 
                     pack();
                 }// </editor-fold>//GEN-END:initComponents
@@ -336,7 +338,9 @@ public class UDialogLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        setVisible(false);
+        //SwingUtils.fadeOutFast(this);
+        this.setVisible(false);
+        //this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     

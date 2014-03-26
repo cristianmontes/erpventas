@@ -20,7 +20,11 @@ import javax.persistence.TemporalType;
  */
 @Embeddable
 public class ContactListPartyStatusPK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3152391970435462077L;
+	@Basic(optional = false)
     @Column(name = "CONTACT_LIST_ID")
     private String contactListId;
     @Basic(optional = false)

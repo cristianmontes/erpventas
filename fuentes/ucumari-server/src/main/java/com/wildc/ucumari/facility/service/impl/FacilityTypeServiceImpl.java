@@ -1,26 +1,26 @@
 /**
  * 
  */
-package com.wildc.ucumari.party.service.impl;
+package com.wildc.ucumari.facility.service.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.wildc.ucumari.party.model.Person;
-import com.wildc.ucumari.party.service.PersonService;
+import com.wildc.ucumari.facility.model.FacilityType;
+import com.wildc.ucumari.facility.service.FacilityTypeService;
 
 /**
- * @author Cristian
+ * @author P018906
  *
  */
-@Service("personService")
-public class PersonServiceImpl implements PersonService {
+@Service("facilityTypeService")
+public class FacilityTypeServiceImpl implements FacilityTypeService {
 
 	/**
 	 * 
 	 */
-	public PersonServiceImpl() {
+	public FacilityTypeServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,7 +28,7 @@ public class PersonServiceImpl implements PersonService {
 	 * @see com.wildc.ucumari.server.framework.service.UcumariServiceBase#load(java.io.Serializable)
 	 */
 	@Override
-	public Person load(String id) {
+	public FacilityType load(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,7 +37,7 @@ public class PersonServiceImpl implements PersonService {
 	 * @see com.wildc.ucumari.server.framework.service.UcumariServiceBase#update(java.io.Serializable)
 	 */
 	@Override
-	public void update(Person entity) {
+	public void update(FacilityType entity) {
 		// TODO Auto-generated method stub
 
 	}
@@ -46,7 +46,7 @@ public class PersonServiceImpl implements PersonService {
 	 * @see com.wildc.ucumari.server.framework.service.UcumariServiceBase#save(java.io.Serializable)
 	 */
 	@Override
-	public void save(Person entity) {
+	public void save(FacilityType entity) {
 		// TODO Auto-generated method stub
 
 	}
@@ -55,7 +55,7 @@ public class PersonServiceImpl implements PersonService {
 	 * @see com.wildc.ucumari.server.framework.service.UcumariServiceBase#delete(java.io.Serializable)
 	 */
 	@Override
-	public void delete(Person entity) {
+	public void delete(FacilityType entity) {
 		// TODO Auto-generated method stub
 
 	}
@@ -64,7 +64,7 @@ public class PersonServiceImpl implements PersonService {
 	 * @see com.wildc.ucumari.server.framework.service.UcumariServiceBase#findAll()
 	 */
 	@Override
-	public List<Person> findAll() {
+	public List<FacilityType> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

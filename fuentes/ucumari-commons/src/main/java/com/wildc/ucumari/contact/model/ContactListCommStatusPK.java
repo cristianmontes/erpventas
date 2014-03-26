@@ -17,7 +17,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class ContactListCommStatusPK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -820670587933095552L;
+	@Basic(optional = false)
     @Column(name = "CONTACT_LIST_ID")
     private String contactListId;
     @Basic(optional = false)

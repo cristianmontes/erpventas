@@ -17,7 +17,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class PostalAddressBoundaryPK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6264795344190647307L;
+	@Basic(optional = false)
     @Column(name = "CONTACT_MECH_ID")
     private String contactMechId;
     @Basic(optional = false)

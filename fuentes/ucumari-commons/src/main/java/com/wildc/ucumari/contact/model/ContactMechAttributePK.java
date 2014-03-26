@@ -17,7 +17,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class ContactMechAttributePK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2580495947892598889L;
+	@Basic(optional = false)
     @Column(name = "CONTACT_MECH_ID")
     private String contactMechId;
     @Basic(optional = false)
