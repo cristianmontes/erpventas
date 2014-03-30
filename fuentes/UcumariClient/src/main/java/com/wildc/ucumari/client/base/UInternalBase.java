@@ -6,7 +6,7 @@
 
 package com.wildc.ucumari.client.base;
 
-import com.wildc.ucumari.client.base.component.UMessage;
+import com.wildc.ucumari.client.base.util.Constantes;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -23,9 +23,16 @@ public class UInternalBase extends javax.swing.JInternalFrame {
         super();
         
         initComponents();
+        /*
+        this.setBorder(
+            javax.swing.BorderFactory.
+      createTitledBorder(null, "title", javax.swing.border.
+      TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.
+      TitledBorder.DEFAULT_POSITION, null, java.awt.Color.red));*/
         
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,14 +45,14 @@ public class UInternalBase extends javax.swing.JInternalFrame {
         container = new javax.swing.JPanel(){
             @Override
             public void paintComponent(Graphics g) {
-                g.setColor(new Color(100,50,50,100));
+                g.setColor(Constantes.BACKGROUND_INTERNAL_FRAME);
                 g.fillRect(0,0,getWidth(), getHeight());
             }};
             toolBar = new javax.swing.JPanel(){
                 @Override
                 public void paintComponent(Graphics g) {
                     //super.paintComponent(g);
-                    g.setColor(new Color(200,50,50,100));
+                    g.setColor(Constantes.BACKGROUND_TOOLBAR_INTERNAL_FRAME);
                     g.fillRect(0,0,getWidth(), getHeight());
                 }};
                 btnNuevo = new com.wildc.ucumari.client.base.component.UToolBarButton();
@@ -55,13 +62,12 @@ public class UInternalBase extends javax.swing.JInternalFrame {
                     @Override
                     public void paintComponent(Graphics g) {
                         //super.paintComponent(g);
-                        g.setColor(new Color(100,50,50,100));
+                        g.setColor(Constantes.BACKGROUND_INTERNAL_FRAME);
                         g.fillRect(0,0,getWidth(), getHeight());
                     }
                 };
 
                 setClosable(true);
-                setIconifiable(true);
                 setMaximizable(true);
                 setResizable(true);
                 setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/logo.png"))); // NOI18N
@@ -72,7 +78,7 @@ public class UInternalBase extends javax.swing.JInternalFrame {
                 toolBar.setOpaque(false);
                 toolBar.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-                btnNuevo.setBackground(new Color(100,50,50,100));
+                btnNuevo.setBackground(Constantes.BACKGROUND_BUTTON_WINDOW);
                 btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/agregar_disabled.png"))); // NOI18N
                 btnNuevo.setMnemonic('N');
                 btnNuevo.setToolTipText("Nuevo");
@@ -87,7 +93,7 @@ public class UInternalBase extends javax.swing.JInternalFrame {
                 });
                 toolBar.add(btnNuevo);
 
-                btnModificar.setBackground(new Color(100,50,50,100));
+                btnModificar.setBackground(Constantes.BACKGROUND_BUTTON_WINDOW);
                 btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/editar_disabled.png"))); // NOI18N
                 btnModificar.setMnemonic('N');
                 btnModificar.setToolTipText("Modificar");
@@ -102,7 +108,7 @@ public class UInternalBase extends javax.swing.JInternalFrame {
                 });
                 toolBar.add(btnModificar);
 
-                btnEliminar.setBackground(new Color(100,50,50,100));
+                btnEliminar.setBackground(Constantes.BACKGROUND_BUTTON_WINDOW);
                 btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/borrar_disabled.png"))); // NOI18N
                 btnEliminar.setMnemonic('N');
                 btnEliminar.setToolTipText("Eliminar");

@@ -6,6 +6,7 @@ package com.wildc.ucumari.security.service.impl;
 import java.util.List;
 
 import com.wildc.ucumari.security.model.UserLoginHistory;
+import com.wildc.ucumari.security.model.UserLoginHistoryPK;
 import com.wildc.ucumari.security.service.UserLoginHistoryService;
 
 /**
@@ -22,7 +23,7 @@ public class UserLoginHistoryServiceImpl implements UserLoginHistoryService {
 	}
 
 	@Override
-	public UserLoginHistory load(String id) {
+	public UserLoginHistory load(UserLoginHistoryPK id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

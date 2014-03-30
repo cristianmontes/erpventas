@@ -36,7 +36,7 @@ public class Serialize {
 	
 	public static String deserialize(String string, Class clazz){
 		try {
-			return mapper.readValue(string, clazz);
+			return null;//mapper.readValue(string, clazz);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();		

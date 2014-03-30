@@ -8,10 +8,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 /**
@@ -78,12 +78,17 @@ public class UTable<T> extends javax.swing.JPanel {
         }else{
             contenidoActual = new Object [][] {};
         }
-        
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        if(listHead == null){
+            listHead = new ArrayList<String>();
+            listHead.add("Columna 1");
+            listHead.add("Columna 2");
+            listHead.add("Columna 3");
+        }
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             contenidoActual,
             listHead.toArray()
         ));
-        
+        this.paint(this.getGraphics());
         
     }
     
@@ -158,8 +163,8 @@ public class UTable<T> extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        scrollDatos = new javax.swing.JScrollPane();
+        tblDatos = new javax.swing.JTable();
         pnlBotonera = new javax.swing.JPanel();
         btnPrimero = new com.wildc.ucumari.client.base.component.UToolBarButton();
         btnAtras = new com.wildc.ucumari.client.base.component.UToolBarButton();
@@ -169,7 +174,7 @@ public class UTable<T> extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
 
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -177,16 +182,16 @@ public class UTable<T> extends javax.swing.JPanel {
 
             }
         ));
-        ((DefaultTableCellRenderer)jTable.getDefaultRenderer(Object.class)).setOpaque(false);
-        jTable.setOpaque(false);
-        jScrollPane1.setViewportView(jTable);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
-        jTable.getTableHeader().setOpaque(false);
+        ((DefaultTableCellRenderer)tblDatos.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblDatos.setOpaque(false);
+        scrollDatos.setViewportView(tblDatos);
+        scrollDatos.setOpaque(false);
+        scrollDatos.getViewport().setOpaque(false);
+        tblDatos.getTableHeader().setOpaque(false);
 
-        jTable.setSelectionBackground(Color.red);
-        jTable.getTableHeader().setBackground(new Color(205,209,235));
-        jTable.setDefaultRenderer(Object.class, new TableCellRenderer(){
+        tblDatos.setSelectionBackground(Color.red);
+        tblDatos.getTableHeader().setBackground(new Color(205,209,235));
+        tblDatos.setDefaultRenderer(Object.class, new TableCellRenderer(){
             private DefaultTableCellRenderer DEFAULT_RENDERER =  new DefaultTableCellRenderer();
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -206,7 +211,7 @@ public class UTable<T> extends javax.swing.JPanel {
 
         });
 
-        jTable.getTableHeader().setDefaultRenderer(new TableCellRenderer(){
+        tblDatos.getTableHeader().setDefaultRenderer(new TableCellRenderer(){
             private DefaultTableCellRenderer DEFAULT_RENDERER =  new DefaultTableCellRenderer();
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -223,7 +228,7 @@ public class UTable<T> extends javax.swing.JPanel {
         //jTable1.getTableHeader().setBackground(new Color(50,0,0,0.5f));
         //jTable1.getTableHeader().setForeground(Color.white);
 
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        add(scrollDatos, java.awt.BorderLayout.CENTER);
 
         pnlBotonera.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         pnlBotonera.setMaximumSize(new java.awt.Dimension(32767, 33));
@@ -307,9 +312,9 @@ public class UTable<T> extends javax.swing.JPanel {
     private com.wildc.ucumari.client.base.component.UToolBarButton btnAtras;
     private com.wildc.ucumari.client.base.component.UToolBarButton btnPrimero;
     private com.wildc.ucumari.client.base.component.UToolBarButton btnUltimo;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable;
     private javax.swing.JPanel pnlBotonera;
+    private javax.swing.JScrollPane scrollDatos;
+    private javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
     //private T object;
     protected Class<T> domainClass;

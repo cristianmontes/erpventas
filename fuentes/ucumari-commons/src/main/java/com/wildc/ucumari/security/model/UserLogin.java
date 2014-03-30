@@ -16,7 +16,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -163,8 +162,8 @@ public class UserLogin implements Serializable {
     @Column(name = "CREATED_TX_STAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdTxStamp;
-    @OneToMany(mappedBy = "lastModifiedByUserLogin")
-    /*private List<Party> partyList;
+    /*@OneToMany(mappedBy = "lastModifiedByUserLogin")
+    private List<Party> partyList;
     @OneToMany(mappedBy = "createdByUserLogin")
     private List<Party> partyList1;
     @OneToMany(mappedBy = "receivedByUserLoginId")

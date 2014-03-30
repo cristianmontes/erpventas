@@ -1,9 +1,9 @@
 package com.wildc.ucumari.client;
 
 import com.wildc.ucumari.client.base.UFrameBase;
-import com.wildc.ucumari.client.base.UInternalBase;
 import com.wildc.ucumari.client.base.component.USynthStyleFactory;
 import com.wildc.ucumari.client.base.util.Conexion;
+import com.wildc.ucumari.party.client.ListaEmpleados;
 import com.wildc.ucumari.security.model.UserLogin;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -22,21 +22,32 @@ import javax.swing.plaf.synth.SynthLookAndFeel;
 
 public class MdiPrincipal extends UFrameBase implements ActionListener {
     static java.util.TreeMap tree = new java.util.TreeMap();    
-    //static java.sql.Connection con$;
-    private String sUsuarioSistema = "";
-    private String sIdUsuarioSistema = "";
-    private String sIdEmpleado = "";
-    private String sIdEmpresa = "";
+    
     private UserLogin usuario = null;
     
     /*private List<Menuview> listaMenu = null;*/
     
 
     public MdiPrincipal() {        
-        validarUsuario();
+        //validarUsuario();
         //inicializaTreeMap();
         validarPerfil();
         setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.WAIT_CURSOR));
+        try{
+            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            for(UIManager.LookAndFeelInfo laf: UIManager.getInstalledLookAndFeels()) {
+                System.out.println("lookand feel: "  + laf.getName() + " clase: " +laf.getClassName());
+                if("Nimbus".equals(laf.getName())) {
+                //if("Metal".equals(laf.getName())) {
+                    UIManager.setLookAndFeel(laf.getClassName());
+                    SynthLookAndFeel.setStyleFactory(
+                        new USynthStyleFactory(SynthLookAndFeel.getStyleFactory()));
+                    break;
+                }
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
         initComponents();
         
         //poblarMenu();
@@ -60,10 +71,7 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         getRootPane().setWindowDecorationStyle( JRootPane. COLOR_CHOOSER_DIALOG );
         
         //Dimension dimension = new Dimension(WIDTH, WIDTH)
-        System.out.println(desktop.getWidth());
-        System.out.println(desktop.getHeight());
-        System.out.println(scrollDesktop.getBounds());
-        System.out.println(scrollDesktop.getHeight());
+        
         //logPane.setBounds(0, 0, scrollDesktop.getBounds().width, scrollDesktop.getBounds().height);
         //logLabel.setBounds(0, 0, scrollDesktop.getBounds().width, scrollDesktop.getBounds().height);
         
@@ -91,11 +99,7 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         desktop.add(frame3);        
         desktop.getDesktopManager().activateFrame(frame3);*/
         
-        UInternalBase frame4 = new UInternalBase();
-        frame4.setSize(660, 400);
-        desktop.add(frame4);        
-        //frame3.setVisible(true);
-        desktop.getDesktopManager().activateFrame(frame4);
+        
         
         
         /*
@@ -110,6 +114,7 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         //jInternalFrame1.setOpaque(false);
         //jInternalFrame1.getRootPane().setOpaque(false);
         //jInternalFrame1.getContentPane().set
+        
 }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -121,121 +126,93 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         btnSalir = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         scrollArbol = new javax.swing.JScrollPane();
-        arbolOpciones = new javax.swing.JTree();
         scrollDesktop = new javax.swing.JScrollPane();
         desktop = new com.wildc.ucumari.client.base.DesktopUcumari();
-        try{
-            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            for(UIManager.LookAndFeelInfo laf: UIManager.getInstalledLookAndFeels()) {
-                System.out.println("lookand feel: "  + laf.getName() + " clase: " +laf.getClassName());
-                if("Nimbus".equals(laf.getName())) {
-                    //if("Metal".equals(laf.getName())) {
-                        UIManager.setLookAndFeel(laf.getClassName());
-                        SynthLookAndFeel.setStyleFactory(
-                            new USynthStyleFactory(SynthLookAndFeel.getStyleFactory()));
-                        break;
-                    }
-                }
-            }catch(Exception e) {
-                e.printStackTrace();
+        mnuBar = new javax.swing.JMenuBar();
+        mHelp = new javax.swing.JMenu();
+        mAbout = new javax.swing.JMenuItem();
+
+        setTitle("Sistema de Ventas");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                exitForm(evt);
             }
-            uInternalBase1 = new com.wildc.ucumari.client.base.UInternalBase();
-            mnuBar = new javax.swing.JMenuBar();
-            mHelp = new javax.swing.JMenu();
-            mAbout = new javax.swing.JMenuItem();
+        });
 
-            setTitle("Sistema de Ventas");
-            addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent evt) {
-                    exitForm(evt);
-                }
-            });
+        toolBar.setFloatable(false);
 
-            toolBar.setFloatable(false);
+        btnVtaCon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/bt_buscar_up.gif"))); // NOI18N
+        btnVtaCon.setToolTipText("Ventanas Abiertas");
+        btnVtaCon.setMaximumSize(new java.awt.Dimension(30, 30));
+        btnVtaCon.setMinimumSize(new java.awt.Dimension(30, 30));
+        btnVtaCon.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnVtaCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVtaConActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnVtaCon);
 
-            btnVtaCon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/bt_buscar_up.gif"))); // NOI18N
-            btnVtaCon.setToolTipText("Ventanas Abiertas");
-            btnVtaCon.setMaximumSize(new java.awt.Dimension(30, 30));
-            btnVtaCon.setMinimumSize(new java.awt.Dimension(30, 30));
-            btnVtaCon.setPreferredSize(new java.awt.Dimension(30, 30));
-            btnVtaCon.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnVtaConActionPerformed(evt);
-                }
-            });
-            toolBar.add(btnVtaCon);
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/bt_imprimir_up.gif"))); // NOI18N
+        btnReporte.setToolTipText("Imprimir");
+        btnReporte.setMaximumSize(new java.awt.Dimension(30, 30));
+        btnReporte.setMinimumSize(new java.awt.Dimension(30, 30));
+        btnReporte.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnReporte);
 
-            btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/bt_imprimir_up.gif"))); // NOI18N
-            btnReporte.setToolTipText("Imprimir");
-            btnReporte.setMaximumSize(new java.awt.Dimension(30, 30));
-            btnReporte.setMinimumSize(new java.awt.Dimension(30, 30));
-            btnReporte.setPreferredSize(new java.awt.Dimension(30, 30));
-            btnReporte.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnReporteActionPerformed(evt);
-                }
-            });
-            toolBar.add(btnReporte);
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/bt_salir_up.gif"))); // NOI18N
+        btnSalir.setToolTipText("Salir");
+        btnSalir.setMaximumSize(new java.awt.Dimension(30, 30));
+        btnSalir.setMinimumSize(new java.awt.Dimension(30, 30));
+        btnSalir.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnSalir);
 
-            btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/wildc/ucumari/resources/bt_salir_up.gif"))); // NOI18N
-            btnSalir.setToolTipText("Salir");
-            btnSalir.setMaximumSize(new java.awt.Dimension(30, 30));
-            btnSalir.setMinimumSize(new java.awt.Dimension(30, 30));
-            btnSalir.setPreferredSize(new java.awt.Dimension(30, 30));
-            btnSalir.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnSalirActionPerformed(evt);
-                }
-            });
-            toolBar.add(btnSalir);
+        getContentPane().add(toolBar, java.awt.BorderLayout.NORTH);
 
-            getContentPane().add(toolBar, java.awt.BorderLayout.NORTH);
+        jSplitPane1.setBorder(null);
+        jSplitPane1.setDividerSize(6);
+        jSplitPane1.setAutoscrolls(true);
+        jSplitPane1.setOneTouchExpandable(true);
 
-            jSplitPane1.setBorder(null);
-            jSplitPane1.setDividerSize(6);
-            jSplitPane1.setAutoscrolls(true);
-            jSplitPane1.setOneTouchExpandable(true);
+        scrollArbol.setBackground(new java.awt.Color(204, 204, 204));
+        scrollArbol.setMinimumSize(new java.awt.Dimension(120, 100));
+        scrollArbol.setPreferredSize(new java.awt.Dimension(150, 120));
+        jSplitPane1.setLeftComponent(scrollArbol);
 
-            scrollArbol.setBackground(new java.awt.Color(204, 204, 204));
-            scrollArbol.setMinimumSize(new java.awt.Dimension(120, 100));
-            scrollArbol.setPreferredSize(new java.awt.Dimension(150, 120));
+        desktop.setBackground(new java.awt.Color(204, 204, 204));
+        desktop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        scrollDesktop.setViewportView(desktop);
 
-            arbolOpciones.setBackground(new java.awt.Color(204, 204, 204));
-            arbolOpciones.setToolTipText("Menu");
-            arbolOpciones.setAutoscrolls(true);
-            arbolOpciones.setMaximumSize(new java.awt.Dimension(32767, 32767));
-            arbolOpciones.setMinimumSize(new java.awt.Dimension(120, 100));
-            arbolOpciones.setName("Menu"); // NOI18N
-            arbolOpciones.setPreferredSize(new java.awt.Dimension(150, 120));
-            scrollArbol.setViewportView(arbolOpciones);
+        jSplitPane1.setRightComponent(scrollDesktop);
 
-            jSplitPane1.setLeftComponent(scrollArbol);
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
-            desktop.setBackground(new java.awt.Color(204, 204, 204));
-            desktop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        mHelp.setText("Ayuda");
 
-            uInternalBase1.setVisible(true);
-            desktop.add(uInternalBase1);
-            uInternalBase1.setBounds(90, 70, 310, 230);
-            desktop.getDesktopManager().activateFrame(uInternalBase1);
+        mAbout.setText("Acerca de..");
+        mAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mAboutActionPerformed(evt);
+            }
+        });
+        mHelp.add(mAbout);
 
-            scrollDesktop.setViewportView(desktop);
+        mnuBar.add(mHelp);
 
-            jSplitPane1.setRightComponent(scrollDesktop);
+        setJMenuBar(mnuBar);
 
-            getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
-
-            mHelp.setText("Ayuda");
-
-            mAbout.setText("Acerca de..");
-            mHelp.add(mAbout);
-
-            mnuBar.add(mHelp);
-
-            setJMenuBar(mnuBar);
-
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
         JTable t = null;         
@@ -278,6 +255,17 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
             System.exit(0);
         }catch(Exception e){System.out.println(""+e);}
     }//GEN-LAST:event_exitForm
+
+    private void mAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAboutActionPerformed
+        /*UAboutDialog uAboutDialog = new UAboutDialog(this, true);        
+        
+        uAboutDialog.dispose();*/
+        ListaEmpleados frame4 = new ListaEmpleados();
+        frame4.setSize(660, 400);
+        desktop.add(frame4);        
+        //frame3.setVisible(true);
+        desktop.getDesktopManager().activateFrame(frame4);
+    }//GEN-LAST:event_mAboutActionPerformed
     
     /**
      * @param args the command line arguments
@@ -405,10 +393,7 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
     }*/
   
     private void fondoPantalla(){
-        //JLabel lblFondo = new JLabel("", new ImageIcon(getClass().getResource("/org/ucumari/images/arcangel.jpg")), JLabel.CENTER);
-        //desktop.add(lblFondo, JLayeredPane.DEFAULT_LAYER);
-        //lblFondo.setLocation(0, 0);
-        //lblFondo.setSize(getToolkit().getScreenSize().width ,600);
+        
         JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -514,16 +499,12 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
 
     
     
-    private void validarUsuario(){
-        UDialogLogin dlgLogin = new UDialogLogin(this, true);
-        //DlgLogin dlgLogin = new DlgLogin(new JFrame(), true);
-        setUsuario(dlgLogin.getUsuarioSession());
-        Conexion.setUserSession(getUsuario());
-        sUsuarioSistema =   dlgLogin.getUsuarioSession().getUserLoginId();
+    private void validarUsuario(){        
+        UDialogLogin dlgLogin = new UDialogLogin(this, true);        
         
         dlgLogin.dispose();
        
-        if (sUsuarioSistema.length()==0)
+        if (Conexion.getUserSession()== null)
             System.exit(0);
     }
     
@@ -533,7 +514,6 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTree arbolOpciones;
     private javax.swing.JButton btnReporte;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVtaCon;
@@ -545,7 +525,6 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
     private javax.swing.JScrollPane scrollArbol;
     private javax.swing.JScrollPane scrollDesktop;
     private javax.swing.JToolBar toolBar;
-    private com.wildc.ucumari.client.base.UInternalBase uInternalBase1;
     // End of variables declaration//GEN-END:variables
 
     

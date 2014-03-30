@@ -4,17 +4,16 @@
  * and open the template in the editor.
  */
 
-package com.wildc.ucumari.client.modelo;
+package com.wildc.ucumari.parameters.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,8 +24,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "sequence_value_item")
-@NamedQueries({
-    @NamedQuery(name = "SequenceValueItem.findAll", query = "SELECT s FROM SequenceValueItem s")})
+
 public class SequenceValueItem implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

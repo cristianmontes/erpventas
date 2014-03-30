@@ -20,6 +20,8 @@
     <class>com.wildc.ucumari.security.model.UserLoginPasswordHistoryPK</class>
     <class>com.wildc.ucumari.security.model.UserLoginSecurityGroup</class>
     <class>com.wildc.ucumari.security.model.UserLoginSecurityGroupPK</class>
+    <class>com.wildc.ucumari.security.model.SystemOption</class>
+    <class>com.wildc.ucumari.security.model.SecurityPermissionOption</class>
     
     <class>com.wildc.ucumari.parameters.model.CustomMethod</class>
     <class>com.wildc.ucumari.parameters.model.CustomMethodType</class>
@@ -42,6 +44,7 @@
     <class>com.wildc.ucumari.parameters.model.TermType</class>
     <class>com.wildc.ucumari.parameters.model.CustomTimePeriod</class>
     <class>com.wildc.ucumari.parameters.model.PeriodType</class>
+    <class>com.wildc.ucumari.parameters.model.SequenceValueItem</class>
     
     
     <class>com.wildc.ucumari.product.model.Product</class>

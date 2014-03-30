@@ -14,9 +14,15 @@ import java.awt.Color;
  */
 public class Constantes {
     
-    public static Color BACKGROUND_LOGIN = new Color(100,50,50,100);
-    
-    public static Color BACKGROUND_BUTTON_WINDOW = new Color(100,50,50,100);
+    //public static Color BACKGROUND_LOGIN = new Color(100,50,50,100);
+    public static Color BACKGROUND_LOGIN = new Color(20,20,20,180);
+    public static Color BACKGROUND_ABOUT = new Color(196,213,202,180);
+    //public static Color BACKGROUND_INTERNAL_FRAME = new Color(100,50,50,100);
+    public static Color BACKGROUND_INTERNAL_FRAME = new Color(0,0,0,150);
+    //public static Color BACKGROUND_TOOLBAR_INTERNAL_FRAME = new Color(200,50,50,100);
+    public static Color BACKGROUND_TOOLBAR_INTERNAL_FRAME = new Color(40,30,30,100);
+    //public static Color BACKGROUND_BUTTON_WINDOW = new Color(100,50,50,100);
+    public static Color BACKGROUND_BUTTON_WINDOW = new Color(250,250,250,100);
     
     
     public static String FILE_APP_CONTEXT = "com.wildc.ucumari.resources.properties.messages";

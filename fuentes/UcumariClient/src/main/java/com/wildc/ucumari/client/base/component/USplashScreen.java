@@ -6,17 +6,17 @@
 
 package com.wildc.ucumari.client.base.component;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JProgressBar;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
 
@@ -118,7 +118,7 @@ public class USplashScreen extends JWindow implements Runnable{
         }
     }
 
-    /*
+   /*
   public static void main(String[] args)
     throws InterruptedException
   {
@@ -166,5 +166,57 @@ public class USplashScreen extends JWindow implements Runnable{
     });
     return frame;
   }*/
+    
+    public USplashScreen(){
+        
+    }
+    private void createAndDisplayGUI()
+    {
+        JOptionPane.showMessageDialog(null, getOptionPanel(), "Modified JOptionPane : ", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public static void main(String... args)
+    {   
+        /*SwingUtilities.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                new USplashScreen().createAndDisplayGUI();
+            }
+        });*/
+        /*
+        UIManager UI=new UIManager();
+ UI.put("OptionPane.background", Constantes.BACKGROUND_LOGIN);
+ UI.put("Panel.background",  Constantes.BACKGROUND_LOGIN);
+
+ JOptionPane.showMessageDialog(null,"Text","SetColor",JOptionPane.INFORMATION_MESSAGE);*/
+        
+        JPanel panel = new JPanel();
+    panel.setBackground(Color.BLUE);
+    panel.setMinimumSize(new Dimension(200,200));
+    
+    // display the jpanel in a joptionpane dialog, using showMessageDialog
+    JFrame frame = new JFrame("JOptionPane showMessageDialog component example");
+    JOptionPane.showMessageDialog(frame, panel);
+    }
+
+    private JPanel getOptionPanel()
+    {
+        JPanel panel = new JPanel();
+        panel.setOpaque(true);
+        panel.setBackground(Color.RED);
+        try
+        {
+            //java.net.URL url = new java.net.URL("http://gagandeepbali.uk.to/gaganisonline/images/swing/geek.gif");
+            ImageIcon image = new ImageIcon(USplashScreen.class.getResource("/com/wildc/ucumari/resources/splash1.jpg"));
+            JLabel label = new JLabel("I am one MODIFIED JOPTIONPANE's LABEL.", image, JLabel.RIGHT);
+            panel.add(label);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return panel;
+    }
     
 }
