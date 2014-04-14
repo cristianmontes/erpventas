@@ -5,8 +5,10 @@
 
 package com.wildc.ucumari.client.base.util;
 
+import com.wildc.ucumari.party.delegate.PartyDelegate;
 import com.wildc.ucumari.security.delegate.SecurityDelegate;
 import com.wildc.ucumari.security.model.UserLogin;
+import org.hibernate.SessionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -47,12 +49,11 @@ public class Conexion{
         //if(session == null || session.equalsIgnoreCase("")) throw new SessionException("No hay session");
         return (SecurityDelegate) getInstance().getBean("securityDelegate");
     }
-    /*
-    public static MovimientoDelegate getMovimientoDelegate() throws SessionException{            
-        getInstance();
-        if(session == null || session.equalsIgnoreCase("")) throw new SessionException("No hay session");
-        return (MovimientoDelegate) getInstance().getBean("movimientoDelegate");
-    }*/
+    
+    public static PartyDelegate getPartyDelegate(){            
+        
+        return (PartyDelegate) getInstance().getBean("partyDelegate");
+    }
     
    
 }

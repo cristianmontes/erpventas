@@ -13,6 +13,8 @@ import java.awt.Paint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.*;
 import javax.swing.plaf.synth.SynthLookAndFeel;
 
@@ -28,11 +30,15 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
     /*private List<Menuview> listaMenu = null;*/
     
 
-    public MdiPrincipal() {        
-        //validarUsuario();
+    public MdiPrincipal() {
+        Conexion.getInstance();
+        validarUsuario();
         //inicializaTreeMap();
+       
         validarPerfil();
+        initComponents();
         setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.WAIT_CURSOR));
+        /*
         try{
             //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             for(UIManager.LookAndFeelInfo laf: UIManager.getInstalledLookAndFeels()) {
@@ -48,7 +54,8 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        initComponents();
+        */
+        
         
         //poblarMenu();
         //fondoPantalla();
@@ -76,7 +83,7 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         //logLabel.setBounds(0, 0, scrollDesktop.getBounds().width, scrollDesktop.getBounds().height);
         
         
-        /*
+        
         try{
             //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             for(UIManager.LookAndFeelInfo laf: UIManager.getInstalledLookAndFeels()) {
@@ -91,29 +98,11 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
             }
         }catch(Exception e) {
             e.printStackTrace();
-        }*/
-                
-        
+        }
+        UIManager.getLookAndFeelDefaults().put("Button.background", Color.WHITE);
         /*
-        NewJInternalFrame frame3 = new NewJInternalFrame(this);
-        desktop.add(frame3);        
-        desktop.getDesktopManager().activateFrame(frame3);*/
-        
-        
-        
-        
-        /*
-        UInternalBase frame4 = new UInternalBase();
-        desktop.add(frame4);
-        desktop.getDesktopManager().activateFrame(frame4);*/
-        /*
-        
-        frame3.setOpaque(false);*/
-        
-        
-        //jInternalFrame1.setOpaque(false);
-        //jInternalFrame1.getRootPane().setOpaque(false);
-        //jInternalFrame1.getContentPane().set
+        UIManager.getLookAndFeelDefaults().put("Button.textForeground", Color.BLUE);
+       */
         
 }
     
@@ -260,7 +249,7 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
         /*UAboutDialog uAboutDialog = new UAboutDialog(this, true);        
         
         uAboutDialog.dispose();*/
-        ListaEmpleados frame4 = new ListaEmpleados();
+      ListaEmpleados frame4 = new ListaEmpleados(this);
         frame4.setSize(660, 400);
         desktop.add(frame4);        
         //frame3.setVisible(true);
@@ -271,36 +260,35 @@ public class MdiPrincipal extends UFrameBase implements ActionListener {
      * @param args the command line arguments
      */
     public static void main(String args[]) throws Exception {
-        // Se obtiene la Conexion
-        /*LookAndFeel lf = UIManager.getLookAndFeel();
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");*/
-        
+               
+
         /*
-        GraphicsEnvironment ge = 
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice gd = ge.getDefaultScreenDevice();
-        
-        boolean isPerPixelTranslucencySupported = 
-            gd.isWindowTranslucencySupported(GraphicsDevice.WindowTranslucency.PERPIXEL_TRANSLUCENT);
-
-        //If translucent windows aren't supported, exit.
-        if (!isPerPixelTranslucencySupported) {
-            System.out.println(
-                "Per-pixel translucency is not supported");
-                System.exit(0);
-        }
-
-        //JFrame.setDefaultLookAndFeelDecorated(true);
-        */
-        
-
-        
+        try{
+            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            for(UIManager.LookAndFeelInfo laf: UIManager.getInstalledLookAndFeels()) {
+                System.out.println("lookand feel: "  + laf.getName() + " clase: " +laf.getClassName());
+                if("Nimbus".equals(laf.getName())) {
+                //if("Metal".equals(laf.getName())) {
+                    UIManager.setLookAndFeel(laf.getClassName());
+                    SynthLookAndFeel.setStyleFactory(
+                        new USynthStyleFactory(SynthLookAndFeel.getStyleFactory()));
+                    
+                    
+                    break;
+                }
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+        }*/
         
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        UIManager.getLookAndFeelDefaults().put("Button.background", Color.WHITE);
+        //UIManager.getLookAndFeelDefaults().put("Button.textForeground", Color.BLUE);
+        //UIManager.getLookAndFeelDefaults().put("ToolBar.background", Color.BLACK);
         
         try{            
             new MdiPrincipal().setVisible(true);

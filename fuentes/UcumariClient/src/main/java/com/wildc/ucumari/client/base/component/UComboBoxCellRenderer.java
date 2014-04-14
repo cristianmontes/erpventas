@@ -6,6 +6,7 @@
 
 package com.wildc.ucumari.client.base.component;
 
+import com.wildc.ucumari.client.base.util.Constantes;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
@@ -18,8 +19,8 @@ import javax.swing.ListCellRenderer;
  */
 public class UComboBoxCellRenderer extends JLabel implements ListCellRenderer<Object>{
     public UComboBoxCellRenderer() {
-         //setOpaque(true);
-        setOpaque(false);
+         setOpaque(true);
+        //setOpaque(false);
      }
 
     @Override
@@ -30,15 +31,15 @@ public class UComboBoxCellRenderer extends JLabel implements ListCellRenderer<Ob
                                                    boolean cellHasFocus) {
 
         if(value != null){
-         setText(value.toString());
+         setText(" " +value.toString());
         }
 
          Color background;
          Color foreground;
 
          // check if this cell represents the current DnD drop location
-         list.setBackground(new Color(100,120,70,100));
-         list.setOpaque(false);
+         //list.setBackground(new Color(100,120,70,100));
+         //list.setOpaque(false);
          JList.DropLocation dropLocation = list.getDropLocation();         
          if (dropLocation != null
                  && !dropLocation.isInsert()
@@ -49,13 +50,14 @@ public class UComboBoxCellRenderer extends JLabel implements ListCellRenderer<Ob
 
          // check if this cell is selected
          } else if (isSelected) {
-             background = Color.RED;
+             background = Color.blue;
+             //background = Constantes.BACKGROUND_TEXT_FIELD;
              foreground = Color.WHITE;
 
          // unselected, and not the DnD drop location
          } else {
              //background = Color.WHITE;
-             background = new Color(100,120,70,100);
+             background = Constantes.BACKGROUND_TEXT_FIELD;
              foreground = Color.BLACK;
          }
 

@@ -7,6 +7,7 @@
 package com.wildc.ucumari.client.base.component;
 
 import com.wildc.ucumari.client.base.util.BallonUtils;
+import com.wildc.ucumari.client.base.util.Constantes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -45,7 +46,10 @@ public class UPasswordField extends JPasswordField implements FocusListener{
     
     public UPasswordField() {
         super();
-        setOpaque(false);
+        //setOpaque(false);
+        setBackground(Constantes.BACKGROUND_TEXT_FIELD);
+        setForeground(Color.WHITE);
+        setMargin(new java.awt.Insets(-5, 1, -5, 1));
     }
     
     @Override
@@ -117,9 +121,9 @@ public class UPasswordField extends JPasswordField implements FocusListener{
     @Override 
     protected void paintBorder(Graphics g) {
          if(required){
-            g.setColor(Color.red);
+            g.setColor(Color.BLUE);
          }else{
-             g.setColor(getForeground());
+            g.setColor(Color.WHITE);
          }         
          g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, arcw, arch);
          

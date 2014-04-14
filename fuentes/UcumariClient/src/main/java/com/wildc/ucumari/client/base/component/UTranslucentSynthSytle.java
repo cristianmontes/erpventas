@@ -6,6 +6,7 @@
 
 package com.wildc.ucumari.client.base.component;
 
+import com.wildc.ucumari.client.base.util.Constantes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -66,7 +67,8 @@ public class UTranslucentSynthSytle extends SynthStyle{
             @Override 
             public void paintInternalFrameBackground(SynthContext context, Graphics g,
                                                                int x, int y, int w, int h) {
-                g.setColor(new Color(150,200,100,100));
+                //g.setColor(new Color(150,200,100,100));
+                g.setColor(Constantes.BORDER_INTERNAL_FRAME);
                 g.fillRoundRect(x,y,w-1,h-1,15,15);
             }
         };
@@ -95,6 +97,8 @@ public class UTranslucentSynthSytle extends SynthStyle{
     @Override 
     public Color getColorForState(SynthContext context, ColorType type) {
         return null; //Color.RED;
+        
+        
     }
     @Override 
     public Font getFontForState(SynthContext context) {

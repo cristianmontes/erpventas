@@ -6,6 +6,7 @@
 
 package com.wildc.ucumari.client.base;
 
+import com.wildc.ucumari.client.base.util.Constantes;
 import com.wildc.ucumari.client.base.util.SwingUtils;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,7 +31,7 @@ import javax.swing.border.LineBorder;
 public class UDialogBackPanel extends javax.swing.JPanel {
     //private static final Paint fill = new Color(0xAAFFFFFF, true);
     //private static final Paint fill = new Color(0xAAff0000, true);
-    private static final Paint fill = new Color(100,50,50,100);
+    private static final Paint fill = Constantes.FILL_BACK_PANEL;
     //private static final ImageIcon shadowImage = new ImageIcon(SwingUtils.class.getResource("dialogShadow.png"));
     private final JComponent cmp;
     private final JLabel title = new JLabel();
@@ -62,10 +63,10 @@ public class UDialogBackPanel extends javax.swing.JPanel {
 
         //headPanel = new JPanel();
         //System.out.println(this.cmp.getPreferredSize());
-        //se suma 8 por los bordes y 30 es estatico para el titulo
-        headPanel.setSize(new Dimension(this.cmp.getPreferredSize().width + 8, 30));
-        
-        headPanel.setBackground(new Color(119,136,153));
+        //se suma 8 por los bordes 4 por cada lado y 30 es estatico para el titulo
+        headPanel.setSize(new Dimension(this.cmp.getPreferredSize().width+8, 30));
+        //color Cabecera del dialog
+        headPanel.setBackground(Constantes.BACKGROUND_DIALOG);
 
         //headPanel.setOpaque(false);
         //setBackground(new Color(100,50,50,100));
@@ -78,15 +79,15 @@ public class UDialogBackPanel extends javax.swing.JPanel {
         add(headPanel);
 
         //cmp.setBorder(BorderFactory.createLineBorder(Color.WHITE, 4));
-        LineBorder roundedLineBorder = new LineBorder(new Color(119,136,153), 4, true);        
+        LineBorder roundedLineBorder = new LineBorder(Constantes.BACKGROUND_DIALOG, 4, true);        
         cmp.setBorder(roundedLineBorder);
         //cmp.setBorder(BorderFactory.createLineBorder(new Color(119,136,153),4));
 
         title.setFont(new Font("Tahoma", Font.BOLD, 14));
-        title.setForeground(Color.BLACK);
+        title.setForeground(Color.WHITE);
         info.setForeground(Color.BLACK);
 
-        title.setText(dialog.getTitle());
+        title.setText(" " + dialog.getTitle());
         title.setSize(title.getPreferredSize());
         info.setSize(info.getPreferredSize());
         cmp.setSize(cmp.getPreferredSize());

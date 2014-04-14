@@ -84,12 +84,13 @@ public class UTable<T> extends javax.swing.JPanel {
             listHead.add("Columna 2");
             listHead.add("Columna 3");
         }
+        //initComponents();
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             contenidoActual,
             listHead.toArray()
         ));
-        this.paint(this.getGraphics());
         
+        this.repaint();
     }
     
     private void primero(){

@@ -6,10 +6,39 @@
 
 package com.wildc.ucumari.party.delegate;
 
+import com.wildc.ucumari.party.model.Person;
+import java.util.Arrays;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 /**
  *
  * @author Cristian
  */
+@Service("partyDelegate")
 public class PartyDelegate {
+    @Autowired
+    private RestTemplate restTemplate;
+    @Value("${url.base}")
+    private String urlBase;
+    @Value("${url.contexto.party}")
+    private String urlPartyRelativo;
+    //private String urlConsultas = "http://localhost:8082/ucumari-server/services/person/";
     
+    public List<Person> findWorkers() throws Exception{
+        //Person[] list = restTemplate.postForObject(urlConsultas+"find/workers", Person[].class,"sss");
+        
+        Person[] list = restTemplate.postForObject(urlBase+urlPartyRelativo+"find/workers", "", Person[].class);
+	return Arrays.asList(list);        
+    }
+    
+    public void saveNewWorker() throws Exception{
+        //Person[] list = restTemplate.postForObject(urlConsultas+"find/workers", Person[].class,"sss");
+        
+        Person[] list = restTemplate.postForObject(urlBase+urlPartyRelativo+"find/workers", "", Person[].class);
+	//return Arrays.asList(list);        
+    }
 }

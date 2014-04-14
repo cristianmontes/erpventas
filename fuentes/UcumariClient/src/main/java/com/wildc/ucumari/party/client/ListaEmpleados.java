@@ -6,7 +6,15 @@
 
 package com.wildc.ucumari.party.client;
 
+import com.wildc.ucumari.client.base.UDialogMantBase;
 import com.wildc.ucumari.client.base.UInternalBaseMant;
+import com.wildc.ucumari.client.base.util.Conexion;
+import com.wildc.ucumari.party.model.Person;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,11 +22,16 @@ import com.wildc.ucumari.client.base.UInternalBaseMant;
  */
 public class ListaEmpleados extends UInternalBaseMant {
 
+    JFrame parent = null;
     /**
-     * Creates new form ListaEmpleados
+     * Creates new form ListaEmpleados1
      */
-    public ListaEmpleados() {
+    public ListaEmpleados(JFrame parent) {
         super();
+        this.parent = parent;
+        initComponents();
+        
+        
     }
 
     /**
@@ -30,21 +43,39 @@ public class ListaEmpleados extends UInternalBaseMant {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void buscar() {
+        try {
+            List<Person> lista = Conexion.getPartyDelegate().findWorkers();
+            
+            
+            
+
+            List<String> lisCont = new ArrayList<String>();
+            lisCont.add("partyId");
+            lisCont.add("firstName");
+            lisCont.add("lastName");
+            tblDatos.setDomainClass(Person.class);
+            tblDatos.setListContenido(lisCont);
+            tblDatos.setListObject(lista);
+        } catch (Exception ex) {
+            Logger.getLogger(ListaEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        repaint();
+    }
+
+    @Override
+    public void agregar() {
+        //Empleado dialog = new Empleado(parent, true);
+       UDialogMantBase dialog = new UDialogMantBase(parent, "Detalle Empleado", true, new PnlEmpleado());
+       // UDialogBase dialog = new UDialogBase(parent, true);
+        //SwingUtils.createDialogBackPanel(dialog, parent);
+    }
 }

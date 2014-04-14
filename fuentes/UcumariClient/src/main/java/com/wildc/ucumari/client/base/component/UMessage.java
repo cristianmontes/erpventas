@@ -81,21 +81,21 @@ public class UMessage extends javax.swing.JDialog {
         JPanel panel = new JPanel();
         //panel.setBackground(new Color(0xAA05579));
         //panel.setBackground(new Color(176,196,222));
-        panel.setBackground(new Color(100,50,50,200));        
+        panel.setBackground(new Color(40,129,246));        
         //panel.setBackground(Color.GREEN);
         panel.setLayout(null);
         //panel.setOpaque(false);
                       
         panel.add(lblImage);
-        lblImage.setBounds(15, 45, 60, 60);
+        lblImage.setBounds(15, 25, 60, 60);
         
         panel.add(texto);
-        texto.setBounds(80, 45, 205, 60);
+        texto.setBounds(80, 35, 205, 60);
         
         panel.add(btnAceptar);
-        btnAceptar.setBounds(100, 120, 100, 30);
+        btnAceptar.setBounds(100, 100, 100, 30);
         
-        panel.setPreferredSize(new Dimension(300, 160));
+        panel.setPreferredSize(new Dimension(300, 140));
         
         //setBackground(Color.RED);
 

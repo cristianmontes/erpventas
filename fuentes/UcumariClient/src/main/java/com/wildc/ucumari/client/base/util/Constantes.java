@@ -22,7 +22,13 @@ public class Constantes {
     //public static Color BACKGROUND_TOOLBAR_INTERNAL_FRAME = new Color(200,50,50,100);
     public static Color BACKGROUND_TOOLBAR_INTERNAL_FRAME = new Color(40,30,30,100);
     //public static Color BACKGROUND_BUTTON_WINDOW = new Color(100,50,50,100);
-    public static Color BACKGROUND_BUTTON_WINDOW = new Color(250,250,250,100);
+    public static Color BACKGROUND_BUTTON_WINDOW = new Color(250,250,250,200);
+    //public static Color BACKGROUND_DIALOG = new Color(119,136,153);
+    public static Color BACKGROUND_DIALOG = new Color(0,0,0,200);
+    public static Color BORDER_INTERNAL_FRAME = new Color(250,230,250,200);
+    public static Color FILL_BACK_PANEL = new Color(100,50,50,100);
+    public static Color BACKGROUND_TEXT_FIELD = new Color(81,40,246,50);
+   
     
     
     public static String FILE_APP_CONTEXT = "com.wildc.ucumari.resources.properties.messages";
@@ -46,7 +52,7 @@ public class Constantes {
     public static String URL_CONTEXTO_SEGURIDAD = "url.contexto.seguridad";
     
     
-    
+    public static String STRING_VACIO = "";
     
     
 }

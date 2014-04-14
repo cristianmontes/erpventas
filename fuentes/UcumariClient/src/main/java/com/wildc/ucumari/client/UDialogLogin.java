@@ -50,6 +50,7 @@ public class UDialogLogin extends javax.swing.JDialog {
         
         setVisible(true);
         
+        
         /*this.addWindowListener(new WindowAdapter(){
             @Override
             public void windowOpened(WindowEvent e){                
@@ -179,10 +180,12 @@ public class UDialogLogin extends javax.swing.JDialog {
                     pnlDatos.setLayout(null);
 
                     lblEmpresa.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                    lblEmpresa.setForeground(new java.awt.Color(255, 255, 255));
                     lblEmpresa.setText(bundle.getString("login.label.empresa")); // NOI18N
                     pnlDatos.add(lblEmpresa);
                     lblEmpresa.setBounds(10, 20, 70, 20);
 
+                    txtEmpresa.setText("Company");
                     txtEmpresa.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             txtEmpresaActionPerformed(evt);
@@ -194,13 +197,15 @@ public class UDialogLogin extends javax.swing.JDialog {
                         }
                     });
                     pnlDatos.add(txtEmpresa);
-                    txtEmpresa.setBounds(80, 20, 100, 20);
+                    txtEmpresa.setBounds(90, 20, 100, 20);
 
                     lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                    lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
                     lblUsuario.setText(bundle.getString("login.label.usuario")); // NOI18N
                     pnlDatos.add(lblUsuario);
                     lblUsuario.setBounds(10, 60, 70, 20);
 
+                    txtUsuario.setText("admin");
                     txtUsuario.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             txtUsuarioActionPerformed(evt);
@@ -212,8 +217,9 @@ public class UDialogLogin extends javax.swing.JDialog {
                         }
                     });
                     pnlDatos.add(txtUsuario);
-                    txtUsuario.setBounds(80, 60, 100, 20);
+                    txtUsuario.setBounds(90, 60, 100, 20);
 
+                    txtPassword.setText("a8c323ed5c6d3c9b5ba5fa13e75939de954de085");
                     txtPassword.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             txtPasswordActionPerformed(evt);
@@ -225,9 +231,10 @@ public class UDialogLogin extends javax.swing.JDialog {
                         }
                     });
                     pnlDatos.add(txtPassword);
-                    txtPassword.setBounds(80, 100, 100, 20);
+                    txtPassword.setBounds(90, 100, 100, 20);
 
                     lblPassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                    lblPassword.setForeground(new java.awt.Color(255, 255, 255));
                     lblPassword.setText(bundle.getString("login.label.clave")); // NOI18N
                     pnlDatos.add(lblPassword);
                     lblPassword.setBounds(10, 100, 70, 20);
@@ -256,7 +263,7 @@ public class UDialogLogin extends javax.swing.JDialog {
 
                     container.add(pnlDatos, java.awt.BorderLayout.CENTER);
 
-                    container.setPreferredSize(new Dimension(400,220));
+                    container.setPreferredSize(new Dimension(410,220));
                     container.setFocusable(true);
                     container.requestFocusInWindow();
 
@@ -266,7 +273,7 @@ public class UDialogLogin extends javax.swing.JDialog {
                     //SwingUtils.createLoginDialog(this, 408, 270);
                     //SwingUtils.addEscapeToCloseSupport(this, true);
                     //SwingUtils.fadeInFast(this);
-                    this.setSize(408, 270);
+                    this.setSize(418, 270);
                     this.setLocation((this.getToolkit().getScreenSize().width-this.getWidth())/2, (this.getToolkit().getScreenSize().height-this.getHeight())/2);
 
                     pack();
@@ -317,11 +324,13 @@ public class UDialogLogin extends javax.swing.JDialog {
                 userLogin.setPartyCompanyId(empresaLogueada);
                 userLogin = Conexion.getSecurityDelegate().login(userLogin);
                 if(userLogin != null){
-                    setUsuarioSession(userLogin);
+                    Conexion.setUserSession(userLogin);
+                    //setUsuarioSession(userLogin);
                     //System.out.println("usuario..." + usuarioSession.getCodUsuario());
                     //System.out.println("empresa..." + usuario.getEmpresa().getNombre());
                     setVisible(false);
                 }else{
+                    Conexion.setUserSession(null);
                     //addMessage(AppBundle.getInstance().get(Constante.TXT_MSG_USUARIO_INVALIDO));
                     System.out.println("usuario invalido");
                 }

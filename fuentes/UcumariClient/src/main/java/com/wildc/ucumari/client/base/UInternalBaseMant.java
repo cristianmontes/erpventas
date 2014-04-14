@@ -9,14 +9,12 @@ package com.wildc.ucumari.client.base;
 import com.wildc.ucumari.client.base.util.Constantes;
 import com.wildc.ucumari.security.model.UserLogin;
 import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Cristian
  */
-public class UInternalBaseMant extends javax.swing.JInternalFrame {
+public abstract class UInternalBaseMant extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NewJInternalFrame
@@ -25,23 +23,7 @@ public class UInternalBaseMant extends javax.swing.JInternalFrame {
         super();
         
         initComponents();
-        List<UserLogin> listU = new ArrayList<UserLogin>();
-        UserLogin userL = null;
-        for(int i=0; i<15; i++){
-            userL = new UserLogin();
-            userL.setPartyCompanyId("company" + (i+1));
-            userL.setUserLoginId("user ");
-            userL.setCurrentPassword("password");
-            listU.add(userL);
-        }
         
-        List<String> lisCont = new ArrayList<String>();
-        lisCont.add("partyCompanyId");
-        lisCont.add("currentPassword");
-        lisCont.add("userLoginId");
-        tblDatos.setDomainClass(UserLogin.class);
-        tblDatos.setListContenido(lisCont);
-        tblDatos.setListObject(listU);
         /*
         this.setBorder(
             javax.swing.BorderFactory.
@@ -208,13 +190,10 @@ public class UInternalBaseMant extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    public void agregar(){
-        
-        
-    }
+    public abstract void agregar();
     
     public void modificar(){
         
@@ -223,6 +202,8 @@ public class UInternalBaseMant extends javax.swing.JInternalFrame {
     public void eliminar(){
         
     }
+    
+    public abstract void buscar();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.wildc.ucumari.client.base.component.UToolBarButton btnBuscar;
@@ -235,7 +216,7 @@ public class UInternalBaseMant extends javax.swing.JInternalFrame {
     private com.wildc.ucumari.client.base.component.UPanel pnlBusqueda;
     private com.wildc.ucumari.client.base.component.UPanel pnlDetalleBusqueda;
     private com.wildc.ucumari.client.base.component.UPanel pnlFiltro;
-    private com.wildc.ucumari.client.base.component.UTable tblDatos;
+    protected com.wildc.ucumari.client.base.component.UTable tblDatos;
     private javax.swing.JPanel toolBar;
     // End of variables declaration//GEN-END:variables
 }
