@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -55,12 +56,12 @@ public class PartyRelationship implements Serializable {
     @JoinColumn(name = "PARTY_RELATIONSHIP_TYPE_ID", referencedColumnName = "PARTY_RELATIONSHIP_TYPE_ID")
     @ManyToOne
     private PartyRelationshipType partyRelationshipTypeId;
-    /*
     @JoinColumns({
         @JoinColumn(name = "PARTY_ID_TO", referencedColumnName = "PARTY_ID", insertable = false, updatable = false),
         @JoinColumn(name = "ROLE_TYPE_ID_TO", referencedColumnName = "ROLE_TYPE_ID", insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private PartyRole partyRole;
+    /*    
     @JoinColumn(name = "STATUS_ID", referencedColumnName = "STATUS_ID")
     @ManyToOne
     private StatusItem statusId;
@@ -70,11 +71,13 @@ public class PartyRelationship implements Serializable {
     @JoinColumn(name = "PRIORITY_TYPE_ID", referencedColumnName = "PRIORITY_TYPE_ID")
     @ManyToOne
     private PriorityType priorityTypeId;
-    @JoinColumns({
+     @JoinColumns({
         @JoinColumn(name = "PARTY_ID_FROM", referencedColumnName = "PARTY_ID", insertable = false, updatable = false),
         @JoinColumn(name = "ROLE_TYPE_ID_FROM", referencedColumnName = "ROLE_TYPE_ID", insertable = false, updatable = false)})
     @ManyToOne(optional = false)
-    private PartyRole partyRole1;*/
+    private PartyRole partyRole1;
+    */
+   
 
     public PartyRelationship() {
     }
@@ -174,7 +177,6 @@ public class PartyRelationship implements Serializable {
     public void setPartyRelationshipTypeId(PartyRelationshipType partyRelationshipTypeId) {
         this.partyRelationshipTypeId = partyRelationshipTypeId;
     }
-/*
     public PartyRole getPartyRole() {
         return partyRole;
     }
@@ -182,6 +184,8 @@ public class PartyRelationship implements Serializable {
     public void setPartyRole(PartyRole partyRole) {
         this.partyRole = partyRole;
     }
+/*
+   
 
     public StatusItem getStatusId() {
         return statusId;
@@ -206,7 +210,7 @@ public class PartyRelationship implements Serializable {
     public void setPriorityTypeId(PriorityType priorityTypeId) {
         this.priorityTypeId = priorityTypeId;
     }
-
+    
     public PartyRole getPartyRole1() {
         return partyRole1;
     }
@@ -214,6 +218,8 @@ public class PartyRelationship implements Serializable {
     public void setPartyRole1(PartyRole partyRole1) {
         this.partyRole1 = partyRole1;
     }*/
+
+   
 
     @Override
     public int hashCode() {

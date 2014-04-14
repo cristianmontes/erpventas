@@ -67,6 +67,8 @@ public class RoleType implements Serializable {
     @Basic(optional = false)
     @Column(name = "ROLE_TYPE_ID")
     private String roleTypeId;
+    @Column(name = "PARENT_TYPE_ID", insertable = false, updatable = false)
+    private String parentTypeId;
     @Column(name = "HAS_TABLE")
     private Character hasTable;
     @Column(name = "DESCRIPTION")
@@ -168,6 +170,7 @@ public class RoleType implements Serializable {
     public void setCreatedTxStamp(Date createdTxStamp) {
         this.createdTxStamp = createdTxStamp;
     }
+    
 /*
     public List<Payment> getPaymentList() {
         return paymentList;
@@ -249,7 +252,15 @@ public class RoleType implements Serializable {
         this.partyRoleList = partyRoleList;
     }*/
 
-    @Override
+    public String getParentTypeId() {
+		return parentTypeId;
+	}
+
+	public void setParentTypeId(String parentTypeId) {
+		this.parentTypeId = parentTypeId;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (roleTypeId != null ? roleTypeId.hashCode() : 0);

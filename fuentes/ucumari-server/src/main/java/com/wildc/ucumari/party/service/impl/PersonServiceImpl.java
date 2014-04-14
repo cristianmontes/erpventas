@@ -5,8 +5,10 @@ package com.wildc.ucumari.party.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wildc.ucumari.party.dao.PersonRepository;
 import com.wildc.ucumari.party.model.Person;
 import com.wildc.ucumari.party.service.PersonService;
 
@@ -16,6 +18,9 @@ import com.wildc.ucumari.party.service.PersonService;
  */
 @Service("personService")
 public class PersonServiceImpl implements PersonService {
+	
+	@Autowired
+	private PersonRepository personRepository;
 
 	/**
 	 * 
@@ -30,7 +35,7 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public Person load(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return personRepository.findOne(id);
 	}
 
 	/* (non-Javadoc)
@@ -39,7 +44,7 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public void update(Person entity) {
 		// TODO Auto-generated method stub
-
+		personRepository.save(entity);
 	}
 
 	/* (non-Javadoc)
@@ -48,7 +53,7 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public void save(Person entity) {
 		// TODO Auto-generated method stub
-
+		personRepository.save(entity);
 	}
 
 	/* (non-Javadoc)
@@ -57,7 +62,7 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public void delete(Person entity) {
 		// TODO Auto-generated method stub
-
+		personRepository.delete(entity);
 	}
 
 	/* (non-Javadoc)
@@ -67,6 +72,15 @@ public class PersonServiceImpl implements PersonService {
 	public List<Person> findAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<Person> findWorkers(){
+		/*
+		 * select per.* from party par, person per, party_relationship pr, role_type rt  where per.PARTY_ID = par.PARTY_ID
+and par.PARTY_ID = pr.PARTY_ID_TO and pr.ROLE_TYPE_ID_TO = rt.ROLE_TYPE_ID and rt.PARENT_TYPE_ID = 'EMPLOYEE';
+		 * */
+		String hql = "select entity.partyRole.party.person from PartyRelationship entity where entity.partyRole.roleType.parentTypeId = 'SALES_REP'";
+		return personRepository.ejecutarHQL(hql, null);		
 	}
 
 }

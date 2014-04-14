@@ -17,9 +17,9 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <listener>
+  <!--listener>
         <listener-class>com.wildc.ucumari.core.config.WebServletContextListener</listener-class>
-    </listener>
+    </listener-->
   <filter>
   	<filter-name>Ucumari Filter</filter-name>
   	<filter-class>com.wildc.ucumari.security.UcumariFilter</filter-class>

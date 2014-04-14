@@ -12,9 +12,13 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.wildc.ucumari.parameters.model.RoleType;
 
 /**
  *
@@ -120,18 +124,20 @@ public class PartyRole implements Serializable {
     private List<OrderItemShipGroup> orderItemShipGroupList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "partyRole")
     private List<CarrierShipmentMethod> carrierShipmentMethodList;
-    @JoinColumn(name = "ROLE_TYPE_ID", referencedColumnName = "ROLE_TYPE_ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private RoleType roleType;
-    @JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Party party;
+        
     @OneToMany(mappedBy = "partyRole")
     private List<Agreement> agreementList;
     @OneToMany(mappedBy = "partyRole1")
     private List<Agreement> agreementList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "partyRole")
     private List<AgreementRole> agreementRoleList;*/
+    
+    @JoinColumn(name = "ROLE_TYPE_ID", referencedColumnName = "ROLE_TYPE_ID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private RoleType roleType;
+    @JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Party party;
 
     public PartyRole() {
     }
@@ -183,6 +189,22 @@ public class PartyRole implements Serializable {
     public void setCreatedTxStamp(Date createdTxStamp) {
         this.createdTxStamp = createdTxStamp;
     }
+    
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
+    }
+
+    public Party getParty() {
+        return party;
+    }
+
+    public void setParty(Party party) {
+        this.party = party;
+    }
 /*
     public List<AcctgTransEntryRole> getAcctgTransEntryRoleList() {
         return acctgTransEntryRoleList;
@@ -224,22 +246,7 @@ public class PartyRole implements Serializable {
         this.carrierShipmentMethodList = carrierShipmentMethodList;
     }
 
-    public RoleType getRoleType() {
-        return roleType;
-    }
-
-    public void setRoleType(RoleType roleType) {
-        this.roleType = roleType;
-    }
-
-    public Party getParty() {
-        return party;
-    }
-
-    public void setParty(Party party) {
-        this.party = party;
-    }
-
+    
     public List<Agreement> getAgreementList() {
         return agreementList;
     }

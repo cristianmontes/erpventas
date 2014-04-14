@@ -9,7 +9,6 @@ package com.wildc.ucumari.party.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
@@ -265,8 +265,8 @@ public class Party implements Serializable {
     private List<CustomTimePeriod> customTimePeriodList;*/
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQ_FLUJO_DETALLE")
-    @TableGenerator(name = "SEQ_FLUJO_DETALLE", table = "SECUENCIA", pkColumnName = "NOMBRE_TABLA", valueColumnName = "CORRELATIVO", pkColumnValue = "FLUJO_DETALLE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "Party")
+    @TableGenerator(name = "Party", table = "sequence_value_item", pkColumnName = "seq_name", valueColumnName = "seq_id", pkColumnValue = "Party", allocationSize = 1)
     //@Basic(optional = false)
     @Column(name = "PARTY_ID")
     private String partyId;
@@ -309,7 +309,10 @@ public class Party implements Serializable {
     private Enumeration documentTypeId;
     @Column(name = "DOCUMENT_NUMBER")
     private String documentNumber;
-    
+    //@OneToOne(cascade = CascadeType.ALL, mappedBy = "party")
+    @JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Person person;
     /*
     @OneToMany(mappedBy = "partyIdTo")
     private List<Shipment> shipmentList;
@@ -372,8 +375,7 @@ public class Party implements Serializable {
     private AcctgTagPostingCheck acctgTagPostingCheck;
     @OneToMany(mappedBy = "agentPartyId")
     private List<AgreementTermBilling> agreementTermBillingList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "party")
-    private Person person;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "party")
     private List<Employment> employmentList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "party1")
@@ -550,6 +552,14 @@ public class Party implements Serializable {
 
     public void setPreferredCurrencyUomId(Uom preferredCurrencyUomId) {
         this.preferredCurrencyUomId = preferredCurrencyUomId;
+    }
+    
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 /*
     public List<Shipment> getShipmentList() {
@@ -784,13 +794,7 @@ public class Party implements Serializable {
         this.agreementTermBillingList = agreementTermBillingList;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+    
 
     public List<Employment> getEmploymentList() {
         return employmentList;

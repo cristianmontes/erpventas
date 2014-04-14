@@ -17,7 +17,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -111,9 +110,9 @@ public class Person implements Serializable {
     @JoinColumn(name = "RESIDENCE_STATUS_ENUM_ID", referencedColumnName = "ENUM_ID")
     @ManyToOne
     private Enumeration residenceStatusEnumId;
-    @JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID", insertable = false, updatable = false)
+    /*@JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID", insertable = false, updatable = false)
     @OneToOne(optional = false)
-    private Party party;
+    private Party party;*/
     @JoinColumn(name = "EMPLOYMENT_STATUS_ENUM_ID", referencedColumnName = "ENUM_ID")
     @ManyToOne
     private Enumeration employmentStatusEnumId;
@@ -390,14 +389,14 @@ public class Person implements Serializable {
     public void setResidenceStatusEnumId(Enumeration residenceStatusEnumId) {
         this.residenceStatusEnumId = residenceStatusEnumId;
     }
-
+/*
     public Party getParty() {
         return party;
     }
 
     public void setParty(Party party) {
         this.party = party;
-    }
+    }*/
 
     public Enumeration getEmploymentStatusEnumId() {
         return employmentStatusEnumId;
