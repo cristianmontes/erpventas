@@ -79,7 +79,7 @@ public class PersonServiceImpl implements PersonService {
 		 * select per.* from party par, person per, party_relationship pr, role_type rt  where per.PARTY_ID = par.PARTY_ID
 and par.PARTY_ID = pr.PARTY_ID_TO and pr.ROLE_TYPE_ID_TO = rt.ROLE_TYPE_ID and rt.PARENT_TYPE_ID = 'EMPLOYEE';
 		 * */
-		String hql = "select entity.partyRole.party.person from PartyRelationship entity where entity.partyRole.roleType.parentTypeId = 'SALES_REP'";
+		String hql = "select entity.partyRole.party.person from PartyRelationship entity where entity.partyRole.roleType.parentTypeId = 'EMPLOYEE'";
 		return personRepository.ejecutarHQL(hql, null);		
 	}
 

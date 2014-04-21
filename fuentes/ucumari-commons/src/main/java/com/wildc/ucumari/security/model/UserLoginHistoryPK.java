@@ -8,6 +8,7 @@ package com.wildc.ucumari.security.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -31,7 +32,7 @@ public class UserLoginHistoryPK implements Serializable {
     @Column(name = "FROM_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fromDate;
-
+    
     public UserLoginHistoryPK() {
     }
 
@@ -56,7 +57,7 @@ public class UserLoginHistoryPK implements Serializable {
         this.fromDate = fromDate;
     }
 
-    @Override
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (userLoginId != null ? userLoginId.hashCode() : 0);

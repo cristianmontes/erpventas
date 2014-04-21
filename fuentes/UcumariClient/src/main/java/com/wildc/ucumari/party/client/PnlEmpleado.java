@@ -6,12 +6,14 @@
 
 package com.wildc.ucumari.party.client;
 
-import com.wildc.ucumari.client.base.component.UMessage;
+import com.wildc.ucumari.client.base.component.UComboBoxModel;
 import com.wildc.ucumari.client.base.component.UPanelMant;
 import com.wildc.ucumari.client.base.util.Conexion;
+import static com.wildc.ucumari.client.base.util.Conexion.getPartyDelegate;
 import com.wildc.ucumari.client.base.util.Constantes;
-import com.wildc.ucumari.party.delegate.PartyDelegate;
-import javax.swing.JOptionPane;
+import com.wildc.ucumari.parameters.model.RoleType;
+import com.wildc.ucumari.party.model.Person;
+import com.wildc.ucumari.security.model.UserLogin;
 
 /**
  *
@@ -23,9 +25,8 @@ public class PnlEmpleado extends UPanelMant {
      * Creates new form PnlEmpleado
      */
     public PnlEmpleado() {
-        initComponents();
-        
-        
+        initComponents();      
+        fillComponents();
     }
 
     /**
@@ -53,10 +54,12 @@ public class PnlEmpleado extends UPanelMant {
         uTextField1 = new com.wildc.ucumari.client.base.component.UTextField();
         lblApemat = new javax.swing.JLabel();
         txtUsuario = new com.wildc.ucumari.client.base.component.UTextField();
-        lblLogin = new javax.swing.JLabel();
+        lblRolEmpleado = new javax.swing.JLabel();
         txtConstrasenia2 = new com.wildc.ucumari.client.base.component.UPasswordField();
         lblPassword1 = new javax.swing.JLabel();
         txtConstrasenia1 = new com.wildc.ucumari.client.base.component.UPasswordField();
+        lblLogin1 = new javax.swing.JLabel();
+        cmbRolEmpleados = new com.wildc.ucumari.client.base.component.UComboBox();
 
         setMinimumSize(new java.awt.Dimension(500, 250));
         setPreferredSize(new java.awt.Dimension(500, 250));
@@ -158,11 +161,11 @@ public class PnlEmpleado extends UPanelMant {
         add(txtUsuario);
         txtUsuario.setBounds(120, 170, 110, 20);
 
-        lblLogin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblLogin.setForeground(new java.awt.Color(255, 255, 255));
-        lblLogin.setText("Usuario Sistema:");
-        add(lblLogin);
-        lblLogin.setBounds(20, 170, 100, 20);
+        lblRolEmpleado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblRolEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        lblRolEmpleado.setText("Rol Empleado:");
+        add(lblRolEmpleado);
+        lblRolEmpleado.setBounds(240, 170, 100, 20);
 
         txtConstrasenia2.setMinimumSize(new java.awt.Dimension(4, 20));
         txtConstrasenia2.setPreferredSize(new java.awt.Dimension(109, 20));
@@ -181,21 +184,37 @@ public class PnlEmpleado extends UPanelMant {
         txtConstrasenia1.setRequired(true);
         add(txtConstrasenia1);
         txtConstrasenia1.setBounds(120, 205, 109, 20);
+
+        lblLogin1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblLogin1.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogin1.setText("Usuario Sistema:");
+        add(lblLogin1);
+        lblLogin1.setBounds(20, 170, 100, 20);
+
+        try{
+            cmbRolEmpleados.setClazz(Class.forName("com.wildc.ucumari.parameters.model.RoleType"));
+        }catch(Exception e){}
+        cmbRolEmpleados.setFieldview("getDescription");
+        cmbRolEmpleados.setRequired(true);
+        add(cmbRolEmpleados);
+        cmbRolEmpleados.setBounds(350, 170, 110, 20);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.wildc.ucumari.client.base.component.UComboBox cmbRolEmpleados;
     private com.wildc.ucumari.client.base.component.UComboBox cmbTipoDoc;
     private com.wildc.ucumari.client.base.component.UDatePicker dateFechNac;
     private javax.swing.JLabel lblApemat;
     private javax.swing.JLabel lblApepat;
     private javax.swing.JLabel lblFechNac;
-    private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblLogin1;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNroDoc;
     private javax.swing.JLabel lblPartiyId;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPassword1;
+    private javax.swing.JLabel lblRolEmpleado;
     private javax.swing.JLabel lblTipoDoc;
     private com.wildc.ucumari.client.base.component.UTextField txtApemat;
     private com.wildc.ucumari.client.base.component.UTextField txtApepat;
@@ -209,8 +228,19 @@ public class PnlEmpleado extends UPanelMant {
 
     @Override
     public void aceptar() {
-        
-        Conexion.getPartyDelegate().;
+        Person person = new Person();
+        person.setFirstName(txtNombres.getText());
+        person.setLastName(txtApepat.getText());
+        person.setBirthDate(dateFechNac.getDate());
+        person.setRoleTypeId(((RoleType)cmbRolEmpleados.getSelectedItem()).getRoleTypeId());
+                
+        UserLogin userLogin = new UserLogin();
+        userLogin.setUserLoginId(txtUsuario.getText());
+        userLogin.setCurrentPassword(txtConstrasenia1.getText());
+        userLogin.setPartyCompanyId(Conexion.getUserSession().getPartyCompanyId());
+        userLogin.setRequirePasswordChange(com.wildc.ucumari.base.util.Constantes.Successful.YES.getCode());
+        userLogin.setPerson(person);
+        Conexion.getPartyDelegate().saveNewWorker(userLogin);
     }
     
     
@@ -237,12 +267,22 @@ public class PnlEmpleado extends UPanelMant {
             txtConstrasenia2.requestFocus();
             return "Repita la Contraseña";
         }
-        if(txtConstrasenia1.getText().equals(txtConstrasenia2.getText())){
+        if(!txtConstrasenia1.getText().equals(txtConstrasenia2.getText())){
             txtConstrasenia1.setText("");
             txtConstrasenia2.setText("");
             txtConstrasenia1.requestFocus();
             return "Las constraseñas deben ser iguales";
         }
         return Constantes.STRING_VACIO;
+    }
+
+    @Override
+    public void fillComponents() {
+        UComboBoxModel<RoleType> modelRolEmpleado = new UComboBoxModel<RoleType>();
+        RoleType roleType = new RoleType();
+        roleType.setParentTypeId(com.wildc.ucumari.base.util.Constantes.RoleType.EMPLOYEE.getCode());
+        //Conexion.getParameterDelegate().findByParentType(roleType);
+        modelRolEmpleado.addElements(Conexion.getParameterDelegate().findByParentType(roleType));
+        cmbRolEmpleados.setModel(modelRolEmpleado);
     }
 }

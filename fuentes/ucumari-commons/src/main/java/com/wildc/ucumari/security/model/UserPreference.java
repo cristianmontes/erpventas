@@ -8,11 +8,10 @@ package com.wildc.ucumari.security.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,8 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "user_preference")
-@NamedQueries({
-    @NamedQuery(name = "UserPreference.findAll", query = "SELECT u FROM UserPreference u")})
+
 public class UserPreference implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId

@@ -7,6 +7,7 @@
 package com.wildc.ucumari.security.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -17,7 +18,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class UserLoginViewPreferencePK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2237495476150720219L;
+	@Basic(optional = false)
     @Column(name = "USER_LOGIN_ID")
     private String userLoginId;
     @Basic(optional = false)
@@ -29,7 +34,7 @@ public class UserLoginViewPreferencePK implements Serializable {
     @Basic(optional = false)
     @Column(name = "PREFERENCE_NAME")
     private String preferenceName;
-
+    
     public UserLoginViewPreferencePK() {
     }
 

@@ -130,13 +130,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <dependency>
         <groupId>com.wildc.ucumari</groupId>
         <artifactId>ucumari-commons</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <!--exclusions>
-                <exclusion>
-                        <artifactId>ucumari-base</artifactId>
-                        <groupId>org.ucumari</groupId>
-                </exclusion>
-        </exclusions-->
+        <version>0.0.1-SNAPSHOT</version>        
+    </dependency>
+    <dependency>
+        <groupId>com.wildc.ucumari</groupId>
+        <artifactId>ucumari-framework</artifactId>
+        <version>0.0.1-SNAPSHOT</version>        
     </dependency>
       <!--dependency>
           <groupId>unknown.binary</groupId>

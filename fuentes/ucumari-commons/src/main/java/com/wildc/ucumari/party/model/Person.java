@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.wildc.ucumari.parameters.model.Enumeration;
 
@@ -116,6 +117,8 @@ public class Person implements Serializable {
     @JoinColumn(name = "EMPLOYMENT_STATUS_ENUM_ID", referencedColumnName = "ENUM_ID")
     @ManyToOne
     private Enumeration employmentStatusEnumId;
+    @Transient
+    private String roleTypeId;
     
 
     public Person() {
@@ -430,5 +433,13 @@ public class Person implements Serializable {
     public String toString() {
         return "com.wildc.ucumari.client.modelo.Person[ partyId=" + partyId + " ]";
     }
+
+	public String getRoleTypeId() {
+		return roleTypeId;
+	}
+
+	public void setRoleTypeId(String roleTypeId) {
+		this.roleTypeId = roleTypeId;
+	}
     
 }

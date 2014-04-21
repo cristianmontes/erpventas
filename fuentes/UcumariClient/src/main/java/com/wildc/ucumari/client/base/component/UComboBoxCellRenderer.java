@@ -17,9 +17,17 @@ import javax.swing.ListCellRenderer;
  *
  * @author Cristian
  */
-public class UComboBoxCellRenderer extends JLabel implements ListCellRenderer<Object>{
-    public UComboBoxCellRenderer() {
-         setOpaque(true);
+public class UComboBoxCellRenderer<E> extends JLabel implements ListCellRenderer<Object>{
+    private String fielddesc = "";
+    private Class clazz;
+    public UComboBoxCellRenderer() {        
+        setOpaque(true);
+        //setOpaque(false);
+     }
+    public UComboBoxCellRenderer(Class clazz,String fielddesc) {
+        this.fielddesc = fielddesc;
+        this.clazz = clazz;
+        setOpaque(true);
         //setOpaque(false);
      }
 
@@ -31,7 +39,19 @@ public class UComboBoxCellRenderer extends JLabel implements ListCellRenderer<Ob
                                                    boolean cellHasFocus) {
 
         if(value != null){
-         setText(" " +value.toString());
+            if(fielddesc != null && !fielddesc.equalsIgnoreCase(Constantes.STRING_VACIO)){
+                try{
+                                       
+                    setText(" " +clazz.getDeclaredMethod(fielddesc).invoke(value));
+                }catch(Exception e){
+                    
+                    setText(" " + value.toString());
+                }
+            }else{
+                setText(" " + value.toString());
+            }
+        }else{
+            setText(" ");
         }
 
          Color background;

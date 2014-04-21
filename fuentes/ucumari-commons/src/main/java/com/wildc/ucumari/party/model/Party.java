@@ -12,16 +12,17 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import com.wildc.ucumari.parameters.model.Enumeration;
 import com.wildc.ucumari.parameters.model.StatusItem;
@@ -265,8 +266,18 @@ public class Party implements Serializable {
     private List<CustomTimePeriod> customTimePeriodList;*/
     private static final long serialVersionUID = 1L;
     @Id
+    
+    @GenericGenerator(name="Party", strategy="com.wildc.ucumari.base.repository.UcumariCodeGenerator", 
+    	parameters = {@Parameter(name = "table", value = "sequence_value_item"),
+    				  @Parameter(name = "primary_key_column", value = "seq_name"),
+    				  @Parameter(name = "value_column", value = "seq_id"),
+    				  @Parameter(name = "primary_key_value", value = "Party")})
+    @GeneratedValue(generator="Party")
+    
+    /*
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "Party")
     @TableGenerator(name = "Party", table = "sequence_value_item", pkColumnName = "seq_name", valueColumnName = "seq_id", pkColumnValue = "Party", allocationSize = 1)
+*/
     //@Basic(optional = false)
     @Column(name = "PARTY_ID")
     private String partyId;
@@ -311,7 +322,7 @@ public class Party implements Serializable {
     private String documentNumber;
     //@OneToOne(cascade = CascadeType.ALL, mappedBy = "party")
     @JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @OneToOne(optional = true )
     private Person person;
     /*
     @OneToMany(mappedBy = "partyIdTo")

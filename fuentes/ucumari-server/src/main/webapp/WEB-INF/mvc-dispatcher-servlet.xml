@@ -21,6 +21,7 @@
 	<jpa:repositories base-package="com.wildc.ucumari.party.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
 	<jpa:repositories base-package="com.wildc.ucumari.product.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
 	<jpa:repositories base-package="com.wildc.ucumari.security.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
+	<jpa:repositories base-package="com.wildc.ucumari.parameters.dao" factory-class="com.wildc.ucumari.base.repository.UcumariRepositoryFactoryBean"/>
 	
 	
 	<bean id="entityManagerFactory"

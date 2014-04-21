@@ -9,6 +9,7 @@
         <context:property-placeholder location="classpath:com/wildc/ucumari/resources/properties/applicationResources.properties" />
         <context:component-scan base-package="com.wildc.ucumari.security.delegate" />
         <context:component-scan base-package="com.wildc.ucumari.party.delegate" />
+        <context:component-scan base-package="com.wildc.ucumari.parameter.delegate" />
         <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
 	    <property name="messageConverters">
 	        <list>

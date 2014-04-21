@@ -87,7 +87,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 		userLoginHistory.setCreatedStamp(Util.currentDate());
 		userLoginHistory.setCreatedTxStamp(Util.currentDate());
 		userLoginHistory.setPartyId(userLogin.getUserLoginId());
-		userLoginHistory.setPartyCompanyId(userLogin.getPartyCompanyId());
+		//userLoginHistory.setPartyCompanyId(userLogin.getPartyCompanyId());
 		
 		if(listUser != null && listUser.size()>0){
 			

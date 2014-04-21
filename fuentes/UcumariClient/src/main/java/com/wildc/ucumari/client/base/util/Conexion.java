@@ -5,10 +5,10 @@
 
 package com.wildc.ucumari.client.base.util;
 
+import com.wildc.ucumari.parameter.delegate.ParameterDelegate;
 import com.wildc.ucumari.party.delegate.PartyDelegate;
 import com.wildc.ucumari.security.delegate.SecurityDelegate;
 import com.wildc.ucumari.security.model.UserLogin;
-import org.hibernate.SessionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -53,6 +53,11 @@ public class Conexion{
     public static PartyDelegate getPartyDelegate(){            
         
         return (PartyDelegate) getInstance().getBean("partyDelegate");
+    }
+    
+    public static ParameterDelegate getParameterDelegate(){            
+        
+        return (ParameterDelegate) getInstance().getBean("parameterDelegate");
     }
     
    

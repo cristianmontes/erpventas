@@ -10,17 +10,22 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import com.wildc.ucumari.party.model.Party;
+import com.wildc.ucumari.party.model.Person;
 
 /**
  *
@@ -121,8 +126,14 @@ public class UserLogin implements Serializable {
     @OneToMany(mappedBy = "createdByUserLogin")
     private List<ContentAssoc> contentAssocList1;*/
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @Basic(optional = false)
+    @GenericGenerator(name="UserLogin", strategy="com.wildc.ucumari.base.repository.UcumariCodeGenerator", 
+	parameters = {@Parameter(name = "table", value = "sequence_value_item"),
+				  @Parameter(name = "primary_key_column", value = "seq_name"),
+				  @Parameter(name = "value_column", value = "seq_id"),
+				  @Parameter(name = "primary_key_value", value = "UserLogin")})
+    @GeneratedValue(generator="UserLogin")
     @Column(name = "USER_LOGIN_ID")
     private String userLoginId;
     @Column(name = "CURRENT_PASSWORD")
@@ -182,9 +193,11 @@ public class UserLogin implements Serializable {
     private List<SalesOpportunity> salesOpportunityList;*/
     @JoinColumn(name = "PARTY_ID", referencedColumnName = "PARTY_ID")
     @ManyToOne
-    private Party partyId;
+    private Party partyId;    
     @Column(name = "PARTY_COMPANY_ID")
     private String partyCompanyId;
+    @Column(name = "ACCESS_CODE")
+    private String accessCode;
     /*
     @OneToMany(mappedBy = "createdBy")
     private List<OrderHeader> orderHeaderList;
@@ -205,9 +218,14 @@ public class UserLogin implements Serializable {
     @OneToMany(mappedBy = "assignedByUserLoginId")
     private List<WorkEffortPartyAssignment> workEffortPartyAssignmentList;
 */
+    
+    @Transient
+    private Person person;
+    
     public UserLogin() {
     }
 
+    
     public UserLogin(String userLoginId) {
         this.userLoginId = userLoginId;
     }
@@ -503,12 +521,21 @@ public class UserLogin implements Serializable {
         this.workEffortPartyAssignmentList = workEffortPartyAssignmentList;
     }*/
 
+    
     public String getPartyCompanyId() {
 		return partyCompanyId;
 	}
 
 	public void setPartyCompanyId(String partyCompanyId) {
 		this.partyCompanyId = partyCompanyId;
+	}
+
+	public String getAccessCode() {
+		return accessCode;
+	}
+
+	public void setAccessCode(String accessCode) {
+		this.accessCode = accessCode;
 	}
 
 	@Override
@@ -535,6 +562,14 @@ public class UserLogin implements Serializable {
     public String toString() {
         return "com.wildc.ucumari.client.modelo.UserLogin[ userLoginId=" + userLoginId + " ]";
     }
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 
     /*
     public List<CashDrawer> getCashDrawerList() {

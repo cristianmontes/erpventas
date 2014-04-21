@@ -3,6 +3,8 @@
  */
 package com.wildc.ucumari.server.framework.to;
 
+import com.wildc.ucumari.base.util.Constantes;
+
 /**
  * @author cmontes
  *
@@ -14,7 +16,9 @@ public class BResult extends BaseTO {
 	 */
 	private static final long serialVersionUID = 370715784948421482L;
 	
-	private String codigo = null;
+	private String codigo = Constantes.TaskStatus.OK.getCode();
+	private String mensaje = null;
+	private Object value = null;
 	/**
 	 * @return the codigo
 	 */
@@ -44,11 +48,18 @@ public class BResult extends BaseTO {
 	 */
 	public void setValue(Object value) {
 		this.value = value;
+	}	
+	
+
+	public String getMensaje() {
+		return mensaje;
 	}
 
 
-	private Object value = null;
-	
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
 
 	/**
 	 * 

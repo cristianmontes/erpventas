@@ -58,8 +58,7 @@ public class UserLoginHistory implements Serializable {
     private Party partyId;*/
     @Column(name = "PARTY_ID")
     private String partyId;
-    @Column(name = "PARTY_COMPANY_ID")
-    private String partyCompanyId;
+    
 
     public UserLoginHistory() {
     }
@@ -167,14 +166,6 @@ public class UserLoginHistory implements Serializable {
 
 	public void setPartyId(String partyId) {
 		this.partyId = partyId;
-	}
-    
-    public String getPartyCompanyId() {
-		return partyCompanyId;
-	}
-
-	public void setPartyCompanyId(String partyCompanyId) {
-		this.partyCompanyId = partyCompanyId;
 	}
 
 	@Override

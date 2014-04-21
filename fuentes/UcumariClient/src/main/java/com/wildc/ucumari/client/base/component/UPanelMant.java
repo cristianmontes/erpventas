@@ -6,6 +6,8 @@
 
 package com.wildc.ucumari.client.base.component;
 
+import com.wildc.ucumari.client.base.util.SwingUtils;
+
 /**
  *
  * @author cmontes
@@ -42,6 +44,9 @@ public abstract class UPanelMant extends UPanel {
 
     public abstract void aceptar();
     public abstract String validarFormulario();
+    public abstract void fillComponents();
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

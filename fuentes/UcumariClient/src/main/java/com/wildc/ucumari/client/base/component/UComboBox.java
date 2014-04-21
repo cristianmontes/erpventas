@@ -21,7 +21,9 @@ public class UComboBox extends JComboBox{
     private boolean required = false;
     private int arcw=10; 
     private int arch=10;
-    
+    private String fieldview = "";
+    private Class clazz;
+            
     public UComboBox(){
         super();
         //setOpaque(false);
@@ -78,6 +80,24 @@ public class UComboBox extends JComboBox{
         this.required = required;
     }
 
+    public String getFieldview() {
+        return fieldview;
+    }
+
+    public void setFieldview(String fieldview) {
+        this.fieldview = fieldview;
+        super.setRenderer(new UComboBoxCellRenderer(clazz,fieldview));
+    }
+
+    public Class getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
+    }
+    
+    
    
     
     

@@ -5,8 +5,10 @@ package com.wildc.ucumari.parameters.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wildc.ucumari.parameters.dao.RoleTypeRepository;
 import com.wildc.ucumari.parameters.model.RoleType;
 import com.wildc.ucumari.parameters.service.RoleTypeService;
 
@@ -16,6 +18,9 @@ import com.wildc.ucumari.parameters.service.RoleTypeService;
  */
 @Service("roleTypeService")
 public class RoleTypeServiceImpl implements RoleTypeService {
+	
+	@Autowired
+	private RoleTypeRepository roleTypeRepository;
 
 	/**
 	 * 
@@ -67,6 +72,12 @@ public class RoleTypeServiceImpl implements RoleTypeService {
 	public List<RoleType> findAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<RoleType> findByParentTypeId(RoleType roleType) {
+		// TODO Auto-generated method stub
+		return roleTypeRepository.findByParentTypeId(roleType.getParentTypeId());
 	}
 
 }

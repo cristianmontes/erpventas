@@ -17,7 +17,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class UserPreferencePK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -616775311046547213L;
+	@Basic(optional = false)
     @Column(name = "USER_LOGIN_ID")
     private String userLoginId;
     @Basic(optional = false)

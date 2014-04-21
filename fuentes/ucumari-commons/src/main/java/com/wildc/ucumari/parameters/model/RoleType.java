@@ -282,7 +282,7 @@ public class RoleType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.wildc.ucumari.client.modelo.RoleType[ roleTypeId=" + roleTypeId + " ]";
+        return  description;
     }
 /*
     public List<Visit> getVisitList() {

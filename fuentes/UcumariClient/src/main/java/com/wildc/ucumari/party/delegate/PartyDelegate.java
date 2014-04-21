@@ -7,6 +7,8 @@
 package com.wildc.ucumari.party.delegate;
 
 import com.wildc.ucumari.party.model.Person;
+import com.wildc.ucumari.security.model.UserLogin;
+import com.wildc.ucumari.server.framework.to.BResult;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +37,10 @@ public class PartyDelegate {
 	return Arrays.asList(list);        
     }
     
-    public void saveNewWorker() throws Exception{
+    public void saveNewWorker(UserLogin userLogin){
         //Person[] list = restTemplate.postForObject(urlConsultas+"find/workers", Person[].class,"sss");
         
-        Person[] list = restTemplate.postForObject(urlBase+urlPartyRelativo+"find/workers", "", Person[].class);
+        BResult bResult = restTemplate.postForObject(urlBase+urlPartyRelativo+"save/worker", userLogin, BResult.class);
 	//return Arrays.asList(list);        
     }
 }

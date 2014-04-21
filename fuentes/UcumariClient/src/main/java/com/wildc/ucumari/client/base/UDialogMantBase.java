@@ -101,6 +101,7 @@ public class UDialogMantBase extends javax.swing.JDialog {
         String mensaje = mainPanel.validarFormulario();
         if(Constantes.STRING_VACIO.equalsIgnoreCase(mensaje)){
             mainPanel.aceptar();
+            SwingUtils.fadeOutFast(this);
         }else{
             UMessage.showMessageAlert(parent, mensaje);
         }

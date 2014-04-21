@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wildc.ucumari.base.util.Constantes;
 import com.wildc.ucumari.party.model.Person;
+import com.wildc.ucumari.party.service.PartyService;
 import com.wildc.ucumari.party.service.PersonService;
 import com.wildc.ucumari.security.model.UserLogin;
 import com.wildc.ucumari.security.service.UserLoginService;
 import com.wildc.ucumari.server.framework.controller.BaseController;
+import com.wildc.ucumari.server.framework.to.BResult;
 
 /**
  * @author Cristian
@@ -30,6 +33,8 @@ public class PartyController extends BaseController {
 	private PersonService personService;
 	@Autowired
 	private UserLoginService userLoginService;
+	@Autowired
+	private PartyService partyService;
 
 	
 	/**
@@ -47,8 +52,17 @@ public class PartyController extends BaseController {
 	
 	@RequestMapping(value = "save/worker", method = RequestMethod.POST)
     @ResponseBody
-    public void saveWorker(@RequestBody UserLogin userLogin) {
-        userLoginService.save(userLogin);
+    public BResult saveWorker(@RequestBody UserLogin userLogin) {
+		try{
+			partyService.saveWorker(userLogin, userLogin.getPerson());
+			return new BResult();
+		}catch(Exception e){
+			e.printStackTrace();
+			BResult result = new BResult();
+			result.setCodigo(Constantes.TaskStatus.ERROR.getCode());
+			result.setMensaje(e.getMessage());
+			return result;
+		}
     }
 
 	
